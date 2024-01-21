@@ -1,0 +1,60 @@
+ 
+.sessions 2;
+ERRLIMIT 40;
+.LOGON 192.168.18.91/dbc,dbc;
+DATABASE DB_STG1;
+.set record vartext "," QUOTE OPTIONAL '"';
+
+
+
+DROP TABLE Production_WorkOrder_Routing_ScrapReason;
+DROP TABLE Production_WorkOrder_Routing_ScrapReason_ERROR1;
+DROP TABLE Production_WorkOrder_Routing_ScrapReason_ERROR2; 
+
+CREATE SET TABLE Production_WorkOrder_Routing_ScrapReason
+     (
+	 
+	 WorkOrderID1 VARCHAR(500),ProductID1 VARCHAR(500),OrderQty VARCHAR(500),StockedQty VARCHAR(500),ScrappedQty VARCHAR(500),StartDate VARCHAR(500),EndDate VARCHAR(500),DueDate VARCHAR(500),ScrapReasonID1 VARCHAR(500),ModifiedDate1 VARCHAR(500),WorkOrderID2 VARCHAR(500),ProductID2 VARCHAR(500),OperationSequence VARCHAR(500),LocationID VARCHAR(500),ScheduledStartDate VARCHAR(500),ScheduledEndDate VARCHAR(500),ActualStartDate VARCHAR(500),ActualEndDate VARCHAR(500),ActualResourceHrs VARCHAR(500),PlannedCost VARCHAR(500),ActualCost VARCHAR(500),ModifiedDate2 VARCHAR(500),ScrapReasonID2 VARCHAR(500),Name1 VARCHAR(500),ModifiedDate3 VARCHAR(500)
+ 
+	 );
+
+
+RECORD 2;
+
+DEFINE
+
+WorkOrderID1 (VARCHAR(500)) ProductID1 (VARCHAR(500)) OrderQty (VARCHAR(500)) StockedQty (VARCHAR(500)) ScrappedQty (VARCHAR(500)) StartDate (VARCHAR(500)) EndDate (VARCHAR(500)) DueDate (VARCHAR(500)) ScrapReasonID1 (VARCHAR(500)) ModifiedDate1 (VARCHAR(500)) WorkOrderID2 (VARCHAR(500)) ProductID2 (VARCHAR(500)) OperationSequence (VARCHAR(500)) LocationID (VARCHAR(500)) ScheduledStartDate (VARCHAR(500)) ScheduledEndDate (VARCHAR(500)) ActualStartDate (VARCHAR(500)) ActualEndDate (VARCHAR(500)) ActualResourceHrs (VARCHAR(500)) PlannedCost (VARCHAR(500)) ActualCost (VARCHAR(500)) ModifiedDate2 (VARCHAR(500)) ScrapReasonID2 (VARCHAR(500)) Name1 (VARCHAR(500)) ModifiedDate3 (VARCHAR(500))
+
+
+
+FILE="F:\ADW 2017\ADW 2017\Production_WorkOrder_Routing_ScrapReason.csv";
+
+
+
+begin loading
+Production_WorkOrder_Routing_ScrapReason
+errorfiles
+Production_WorkOrder_Routing_ScrapReason_ERROR1,
+Production_WorkOrder_Routing_ScrapReason_ERROR2
+
+
+CHECKPOINT 1000;
+
+insert into Production_WorkOrder_Routing_ScrapReason
+(
+
+WorkOrderID1,ProductID1,OrderQty,StockedQty,ScrappedQty,StartDate,EndDate,DueDate,ScrapReasonID1,ModifiedDate1,WorkOrderID2,ProductID2,OperationSequence,LocationID,ScheduledStartDate,ScheduledEndDate,ActualStartDate,ActualEndDate,ActualResourceHrs,PlannedCost,ActualCost,ModifiedDate2,ScrapReasonID2,Name1,ModifiedDate3
+
+)
+values
+
+(
+
+:WorkOrderID1 ,:ProductID1 ,:OrderQty ,:StockedQty ,:ScrappedQty ,:StartDate ,:EndDate ,:DueDate ,:ScrapReasonID1 ,:ModifiedDate1 ,:WorkOrderID2 ,:ProductID2 ,:OperationSequence ,:LocationID ,:ScheduledStartDate ,:ScheduledEndDate ,:ActualStartDate ,:ActualEndDate ,:ActualResourceHrs ,:PlannedCost ,:ActualCost ,:ModifiedDate2 ,:ScrapReasonID2 ,:Name1 ,:ModifiedDate3
+
+);
+
+
+end loading;
+
+.LOGOFF;

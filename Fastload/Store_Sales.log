@@ -1,0 +1,186 @@
+     ===================================================================
+     =                                                                 =
+     =          FASTLOAD UTILITY     VERSION 16.20.00.05               =
+     =          PLATFORM WIN32                                         =
+     =          PID      10688                                         =
+     =                                                                 =
+     ===================================================================
+
+     ===================================================================
+     =                                                                 =
+     =          Copyright 1984-2020, Teradata Corporation.             =
+     =          ALL RIGHTS RESERVED.                                   =
+     =                                                                 =
+     ===================================================================
+
+**** 02:54:43 Processing starting at: Fri Jul 21 02:54:43 2023
+
+
+0001 .sessions 2;
+
+**** 02:54:43 FDL4866 SESSIONS command accepted
+
+0002 ERRLIMIT 40;
+
+**** 02:54:43 Error limit set to: 40
+
+     ===================================================================
+     =                                                                 =
+     =          Logon/Connection                                       =
+     =                                                                 =
+     ===================================================================
+
+0003 .LOGON 192.168.18.91/dbc,
+
+**** 02:54:43 Teradata Database Release: 16.20.32.23
+**** 02:54:43 Teradata Database Version: 16.20.32.23
+**** 02:54:43 Number of AMPs available: 2
+**** 02:54:43 Current CLI or RDBMS allows maximum row size: 64K
+**** 02:54:43 Character set for this job: ASCII
+
+0004 DATABASE DB_STG1;
+
+**** 02:54:43 Command completed successfully
+
+0005 .set record vartext "," QUOTE OPTIONAL '"';
+
+**** 02:54:43 Now set to read 'Variable-Length Text' records
+**** 02:54:43 Delimiter character(s) is set to ','
+**** 02:54:43 Field values are optionally quoted with '"'
+**** 02:54:43 Command completed successfully
+
+
+0006 DROP TABLE Sales_Store;
+
+**** 02:54:43 RDBMS error 3807: Object 'Sales_Store' does not exist.
+
+0007 DROP TABLE Sales_Store_ERROR1;
+
+**** 02:54:43 RDBMS error 3807: Object 'Sales_Store_ERROR1' does not
+              exist.
+
+0008 DROP TABLE Sales_Store_ERROR2;
+
+**** 02:54:43 RDBMS error 3807: Object 'Sales_Store_ERROR2' does not
+              exist.
+
+
+0009 CREATE SET TABLE Sales_Store
+         (
+     
+     	BusinessEntityID VARCHAR(500),Name VARCHAR(500),SalesPersonID VARCHAR(500
+     ),Demographics VARCHAR(500),rowguid VARCHAR(500),ModifiedDate VARCHAR(500)
+     
+     
+     	);
+
+**** 02:54:43 Command completed successfully
+
+
+0010 RECORD 2;
+
+**** 02:54:43 Starting record number set to  : 2
+
+
+0011 DEFINE
+     
+     BusinessEntityID (VARCHAR(500)) Name (VARCHAR(500)) SalesPersonID (VARCHAR
+     (500)) Demographics (VARCHAR(500)) rowguid (VARCHAR(500)) ModifiedDate (VA
+     RCHAR(500))
+     
+     
+     FILE="F:\ADW 2017\ADW 2017\Sales_Store.csv";
+
+**** 02:54:43 FDL4803 DEFINE statement processed
+
+
+0012 begin loading
+     Sales_Store
+     errorfiles
+     Sales_Store_ERROR1
+     ,Sales_Store_ERROR2
+     
+     
+     CHECKPOINT 1000;
+
+**** 02:54:43 Session count 1 returned by the DBS overrides
+              user-requested session count
+**** 02:54:43 Number of FastLoad sessions requested = 1
+**** 02:54:43 Number of FastLoad sessions connected = 1
+**** 02:54:43 FDL4808 LOGON successful
+**** 02:54:43 Number of AMPs available: 2
+**** 02:54:43 BEGIN LOADING COMPLETE
+
+
+     ===================================================================
+     =                                                                 =
+     =          Insert Phase                                           =
+     =                                                                 =
+     ===================================================================
+
+0013 insert into Sales_Store
+     (
+     
+     BusinessEntityID,Name,SalesPersonID,Demographics,rowguid,ModifiedDate
+     
+     )
+     values
+     
+     (
+     
+     :BusinessEntityID ,:Name ,:SalesPersonID ,:Demographics ,:rowguid ,:Modifi
+     edDate
+     
+     );
+
+**** 02:54:43 Number of recs/msg: 21
+**** 02:54:43 Starting to send to RDBMS with record 2
+**** 02:54:43 Sending row 702
+**** 02:54:43 Finished sending rows to the RDBMS
+
+**** 02:54:43 Acquisition Phase statistics:
+              Elapsed time: 00:00:00 (in hh:mm:ss)
+              CPU time:     0.03125 Seconds
+              MB/sec:       N/A
+              MB/cpusec:    11.05
+
+
+     ===================================================================
+     =                                                                 =
+     =          End Loading Phase                                      =
+     =                                                                 =
+     ===================================================================
+
+0014 end loading;
+
+**** 02:54:43 END LOADING COMPLETE
+
+     Total Records Read              =  702
+      - skipped by RECORD command    =  1
+      - sent to the RDBMS            =  701
+     Total Error Table 1             =  0  ---- Table has been dropped
+     Total Error Table 2             =  0  ---- Table has been dropped
+     Total Inserts Applied           =  701
+     Total Duplicate Rows            =  0
+
+     Start:   Fri Jul 21 02:54:43 2023
+     End  :   Fri Jul 21 02:54:43 2023
+
+**** 02:54:43 Application Phase statistics:
+              Elapsed time: 00:00:00 (in hh:mm:ss)
+
+
+0015 .LOGOFF;
+
+     ===================================================================
+     =                                                                 =
+     =          Logoff/Disconnect                                      =
+     =                                                                 =
+     ===================================================================
+
+**** 02:54:44 Logging off all sessions
+**** 02:54:44 Total processor time used = '0.15625 Seconds'
+     .        Start : Fri Jul 21 02:54:43 2023
+     .        End   : Fri Jul 21 02:54:44 2023
+     .        Highest return code encountered = '0'.
+**** 02:54:44 FDL4818 FastLoad Terminated

@@ -1,0 +1,79 @@
+ 
+.sessions 2;
+ERRLIMIT 40;
+.LOGON 192.168.18.91/dbc,dbc;
+DATABASE DB_STG1;
+.set record vartext ",";
+
+
+DROP TABLE ShoppingCartItem_Sales;
+DROP TABLE ShoppingCartItem_Sales_ERROR1;
+DROP TABLE ShoppingCartItem_Sales_ERROR2; 
+
+CREATE SET TABLE ShoppingCartItem_Sales ,NO FALLBACK ,
+     NO BEFORE JOURNAL,
+     NO AFTER JOURNAL
+     (
+	 ShoppingCartItemID	VARCHAR (20),
+	ShoppingCartID	VARCHAR (20),
+	Quantity	VARCHAR (20),
+	ProductID	VARCHAR (20),
+	DateCreated	VARCHAR (30),
+	ModifiedDate	VARCHAR (30)
+
+	);
+
+
+
+
+
+RECORD 2 THRU 4;
+
+DEFINE
+
+ShoppingCartItemID (VARCHAR (20))
+ ShoppingCartID (VARCHAR (20))
+ Quantity (VARCHAR (20))
+ ProductID (VARCHAR (20))
+ DateCreated (VARCHAR (30))
+ ModifiedDate (VARCHAR (30))
+
+
+
+FILE="F:\ADW 2017\ADW 2017\ShoppingCartItem.csv";
+
+begin loading
+ShoppingCartItem_Sales
+errorfiles
+ShoppingCartItem_Sales_ERROR1
+,ShoppingCartItem_Sales_ERROR2
+
+
+CHECKPOINT 1000;
+
+insert into ShoppingCartItem_Sales (
+
+ShoppingCartItemID,
+ShoppingCartID,
+Quantity,
+ProductID,
+DateCreated,
+ModifiedDate
+ 
+)
+values
+
+(
+:ShoppingCartItemID ,
+:ShoppingCartID ,
+:Quantity ,
+:ProductID ,
+:DateCreated ,
+:ModifiedDate
+
+);
+
+
+end loading;
+
+.LOGOFF; 

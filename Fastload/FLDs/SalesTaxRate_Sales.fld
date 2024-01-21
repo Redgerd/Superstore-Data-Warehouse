@@ -1,0 +1,85 @@
+ 
+.sessions 2;
+ERRLIMIT 40;
+.LOGON 192.168.18.91/dbc,dbc;
+DATABASE DB_STG1;
+.set record vartext ",";
+
+
+DROP TABLE SalesTaxRate_Sales;
+DROP TABLE SalesTaxRate_Sales_ERROR1;
+DROP TABLE SalesTaxRate_Sales_ERROR2; 
+
+CREATE SET TABLE SalesTaxRate_Sales ,NO FALLBACK ,
+     NO BEFORE JOURNAL,
+     NO AFTER JOURNAL
+     (
+	SalesTaxRateID	VARCHAR(10),
+	StateProvinceID	VARCHAR(10),
+	TaxType	VARCHAR(10),
+	TaxRate	VARCHAR(10),
+	Name	VARCHAR(80),
+	rowguid	VARCHAR(500),
+	ModifiedDate	VARCHAR(50)
+
+	);
+
+
+
+
+
+RECORD 2 THRU 30;
+
+DEFINE
+
+SalesTaxRateID (VARCHAR(10))
+ StateProvinceID (VARCHAR(10))
+ TaxType (VARCHAR(10))
+ TaxRate (VARCHAR(10))
+ Name (VARCHAR(80))
+ rowguid (VARCHAR(500))
+ ModifiedDate (VARCHAR(50))
+
+
+
+FILE="F:\ADW 2017\ADW 2017\SalesTaxRate.csv";
+
+begin loading
+SalesTaxRate_Sales
+errorfiles
+SalesTaxRate_Sales_ERROR1
+,SalesTaxRate_Sales_ERROR2
+
+
+CHECKPOINT 10;
+
+insert into SalesTaxRate_Sales (
+
+SalesTaxRateID,
+StateProvinceID,
+TaxType,
+TaxRate,
+Name,
+rowguid,
+ModifiedDate
+
+ 
+)
+values
+
+(
+:SalesTaxRateID ,
+:StateProvinceID ,
+:TaxType ,
+:TaxRate ,
+:Name ,
+:rowguid ,
+:ModifiedDate
+
+
+);
+
+
+end loading;
+
+.LOGOFF; 

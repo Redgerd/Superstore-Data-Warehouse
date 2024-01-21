@@ -1,0 +1,61 @@
+ 
+.sessions 2;
+ERRLIMIT 40;
+.LOGON 192.168.18.91/dbc,dbc;
+DATABASE DB_STG1;
+.set record vartext "," QUOTE OPTIONAL '"';
+
+
+DROP TABLE Production_BillOfMaterials;
+DROP TABLE Production_BillOfMaterials_ERROR1;
+DROP TABLE Production_BillOfMaterials_ERROR2; 
+
+CREATE SET TABLE Production_BillOfMaterials
+     (
+	 
+	 BillOfMaterialsID VARCHAR(500),ProductAssemblyID VARCHAR(500),ComponentID VARCHAR(500),StartDate VARCHAR(500),EndDate VARCHAR(500),UnitMeasureCode VARCHAR(500),BOMLevel VARCHAR(500),PerAssemblyQty VARCHAR(500),ModifiedDate VARCHAR(500)
+
+	 );
+
+
+
+
+RECORD 2;
+
+DEFINE
+
+BillOfMaterialsID (VARCHAR(500)) ProductAssemblyID (VARCHAR(500)) ComponentID (VARCHAR(500)) StartDate (VARCHAR(500)) EndDate (VARCHAR(500)) UnitMeasureCode (VARCHAR(500)) BOMLevel (VARCHAR(500)) PerAssemblyQty (VARCHAR(500)) ModifiedDate (VARCHAR(500))
+
+
+
+FILE="F:\ADW 2017\ADW 2017\Production_BillOfMaterials.csv";
+
+
+
+begin loading
+Production_BillOfMaterials
+errorfiles
+Production_BillOfMaterials_ERROR1
+,Production_BillOfMaterials_ERROR2
+
+
+CHECKPOINT 1000;
+
+insert into Production_BillOfMaterials
+(
+
+BillOfMaterialsID,ProductAssemblyID,ComponentID,StartDate,EndDate,UnitMeasureCode,BOMLevel,PerAssemblyQty,ModifiedDate
+ 
+)
+values
+
+(
+
+:BillOfMaterialsID ,:ProductAssemblyID ,:ComponentID ,:StartDate ,:EndDate ,:UnitMeasureCode ,:BOMLevel ,:PerAssemblyQty ,:ModifiedDate
+
+);
+
+
+end loading;
+
+.LOGOFF;

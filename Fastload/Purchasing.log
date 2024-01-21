@@ -1,0 +1,303 @@
+     ===================================================================
+     =                                                                 =
+     =          FASTLOAD UTILITY     VERSION 16.20.00.05               =
+     =          PLATFORM WIN32                                         =
+     =          PID      6224                                          =
+     =                                                                 =
+     ===================================================================
+
+     ===================================================================
+     =                                                                 =
+     =          Copyright 1984-2020, Teradata Corporation.             =
+     =          ALL RIGHTS RESERVED.                                   =
+     =                                                                 =
+     ===================================================================
+
+**** 01:19:56 Processing starting at: Fri Jul 21 01:19:56 2023
+
+
+0001 .sessions 2;
+
+**** 01:19:56 FDL4866 SESSIONS command accepted
+
+0002 ERRLIMIT 40;
+
+**** 01:19:56 Error limit set to: 40
+
+     ===================================================================
+     =                                                                 =
+     =          Logon/Connection                                       =
+     =                                                                 =
+     ===================================================================
+
+0003 .LOGON 192.168.18.91/dbc,
+
+**** 01:19:56 Teradata Database Release: 16.20.32.23
+**** 01:19:56 Teradata Database Version: 16.20.32.23
+**** 01:19:56 Number of AMPs available: 2
+**** 01:19:56 Current CLI or RDBMS allows maximum row size: 64K
+**** 01:19:56 Character set for this job: ASCII
+
+0004 DATABASE DB_STG1;
+
+**** 01:19:56 Command completed successfully
+
+0005 .set record vartext ","  QUOTE OPTIONAL '"';
+
+**** 01:19:56 Now set to read 'Variable-Length Text' records
+**** 01:19:56 Delimiter character(s) is set to ','
+**** 01:19:56 Field values are optionally quoted with '"'
+**** 01:19:56 Command completed successfully
+
+
+0006 DROP TABLE Purchasing;
+
+**** 01:19:56 RDBMS error 3807: Object 'Purchasing' does not exist.
+
+0007 DROP TABLE Purchasing_ERROR1;
+
+**** 01:19:56 RDBMS error 3807: Object 'Purchasing_ERROR1' does not
+              exist.
+
+0008 DROP TABLE Purchasing_ERROR2;
+
+**** 01:19:56 RDBMS error 3807: Object 'Purchasing_ERROR2' does not
+              exist.
+
+
+0009 CREATE SET TABLE Purchasing
+         (
+     
+     	BusinessEntityID1 VARCHAR(500),AccountNumber VARCHAR(500),Name1 VARCHAR(5
+     00),CreditRating VARCHAR(500),PreferredVendorStatus VARCHAR(500),ActiveFla
+     g VARCHAR(500),PurchasingWebServiceURL VARCHAR(500),ModifiedDate1 VARCHAR(
+     500),BusinessEntityID2 VARCHAR(500),ProductID1 VARCHAR(500),AverageLeadTim
+     e VARCHAR(500),StandardPrice VARCHAR(500),LastReceiptCost VARCHAR(500),Las
+     tReceiptDate VARCHAR(500),MinOrderQty VARCHAR(500),MaxOrderQty VARCHAR(500
+     ),OnOrderQty VARCHAR(500),UnitMeasureCode VARCHAR(500),ModifiedDate2 VARCH
+     AR(500),PurchaseOrderID1 VARCHAR(500),ShipMethodID1 VARCHAR(500),VendorID 
+     VARCHAR(500),RevisionNumber VARCHAR(500),Status VARCHAR(500),OrderDate VAR
+     CHAR(500),ShipDate VARCHAR(500),SubTotal VARCHAR(500),TaxAmt VARCHAR(500),
+     Freight VARCHAR(500),TotalDue VARCHAR(500),ModifiedDate3 VARCHAR(500),Purc
+     haseOrderID2 VARCHAR(500),PurchaseOrderDetailID VARCHAR(500),DueDate VARCH
+     AR(500),OrderQty VARCHAR(500),ProductID2 VARCHAR(500),UnitPrice VARCHAR(50
+     0),LineTotal VARCHAR(500),ReceivedQty VARCHAR(500),RejectedQty VARCHAR(500
+     ),StockedQty VARCHAR(500),ModifiedDate4 VARCHAR(500),ShipMethodID2 VARCHAR
+     (500),Name2 VARCHAR(500),ShipBase VARCHAR(500),ShipRate VARCHAR(500),rowgu
+     id VARCHAR(500),ModifiedDate5 VARCHAR(500)
+     
+     	);
+
+**** 01:19:56 Command completed successfully
+
+
+0010 RECORD 2;
+
+**** 01:19:56 Starting record number set to  : 2
+
+
+0011 DEFINE
+     
+     BusinessEntityID1 (VARCHAR(500)) AccountNumber (VARCHAR(500)) Name1 (VARCH
+     AR(500)) CreditRating (VARCHAR(500)) PreferredVendorStatus (VARCHAR(500)) 
+     ActiveFlag (VARCHAR(500)) PurchasingWebServiceURL (VARCHAR(500)) ModifiedD
+     ate1 (VARCHAR(500)) BusinessEntityID2 (VARCHAR(500)) ProductID1 (VARCHAR(5
+     00)) AverageLeadTime (VARCHAR(500)) StandardPrice (VARCHAR(500)) LastRecei
+     ptCost (VARCHAR(500)) LastReceiptDate (VARCHAR(500)) MinOrderQty (VARCHAR(
+     500)) MaxOrderQty (VARCHAR(500)) OnOrderQty (VARCHAR(500)) UnitMeasureCode
+      (VARCHAR(500)) ModifiedDate2 (VARCHAR(500)) PurchaseOrderID1 (VARCHAR(500
+     )) ShipMethodID1 (VARCHAR(500)) VendorID (VARCHAR(500)) RevisionNumber (VA
+     RCHAR(500)) Status (VARCHAR(500)) OrderDate (VARCHAR(500)) ShipDate (VARCH
+     AR(500)) SubTotal (VARCHAR(500)) TaxAmt (VARCHAR(500)) Freight (VARCHAR(50
+     0)) TotalDue (VARCHAR(500)) ModifiedDate3 (VARCHAR(500)) PurchaseOrderID2 
+     (VARCHAR(500)) PurchaseOrderDetailID (VARCHAR(500)) DueDate (VARCHAR(500))
+      OrderQty (VARCHAR(500)) ProductID2 (VARCHAR(500)) UnitPrice (VARCHAR(500)
+     ) LineTotal (VARCHAR(500)) ReceivedQty (VARCHAR(500)) RejectedQty (VARCHAR
+     (500)) StockedQty (VARCHAR(500)) ModifiedDate4 (VARCHAR(500)) ShipMethodID
+     2 (VARCHAR(500)) Name2 (VARCHAR(500)) ShipBase (VARCHAR(500)) ShipRate (VA
+     RCHAR(500)) rowguid (VARCHAR(500)) ModifiedDate5 (VARCHAR(500))
+     
+     
+     
+     FILE="F:\ADW 2017\ADW 2017\Purchasing.csv";
+
+**** 01:19:56 FDL4803 DEFINE statement processed
+
+
+0012 begin loading
+     Purchasing
+     errorfiles
+     Purchasing_ERROR1,
+     Purchasing_ERROR2
+     
+     
+     CHECKPOINT 1000;
+
+**** 01:19:56 Number of FastLoad sessions requested = 2
+**** 01:19:56 Number of FastLoad sessions connected = 2
+**** 01:19:56 FDL4808 LOGON successful
+**** 01:20:01 Number of AMPs available: 2
+**** 01:20:01 BEGIN LOADING COMPLETE
+
+
+     ===================================================================
+     =                                                                 =
+     =          Insert Phase                                           =
+     =                                                                 =
+     ===================================================================
+
+0013 insert into Purchasing
+     (
+     
+     BusinessEntityID1,AccountNumber,Name1,CreditRating,PreferredVendorStatus,A
+     ctiveFlag,PurchasingWebServiceURL,ModifiedDate1,BusinessEntityID2,ProductI
+     D1,AverageLeadTime,StandardPrice,LastReceiptCost,LastReceiptDate,MinOrderQ
+     ty,MaxOrderQty,OnOrderQty,UnitMeasureCode,ModifiedDate2,PurchaseOrderID1,S
+     hipMethodID1,VendorID,RevisionNumber,Status,OrderDate,ShipDate,SubTotal,Ta
+     xAmt,Freight,TotalDue,ModifiedDate3,PurchaseOrderID2,PurchaseOrderDetailID
+     ,DueDate,OrderQty,ProductID2,UnitPrice,LineTotal,ReceivedQty,RejectedQty,S
+     tockedQty,ModifiedDate4,ShipMethodID2,Name2,ShipBase,ShipRate,rowguid,Modi
+     fiedDate5
+     
+     )
+     values
+     
+     (
+     
+     :BusinessEntityID1 ,:AccountNumber ,:Name1 ,:CreditRating ,:PreferredVendo
+     rStatus ,:ActiveFlag ,:PurchasingWebServiceURL ,:ModifiedDate1 ,:BusinessE
+     ntityID2 ,:ProductID1 ,:AverageLeadTime ,:StandardPrice ,:LastReceiptCost 
+     ,:LastReceiptDate ,:MinOrderQty ,:MaxOrderQty ,:OnOrderQty ,:UnitMeasureCo
+     de ,:ModifiedDate2 ,:PurchaseOrderID1 ,:ShipMethodID1 ,:VendorID ,:Revisio
+     nNumber ,:Status ,:OrderDate ,:ShipDate ,:SubTotal ,:TaxAmt ,:Freight ,:To
+     talDue ,:ModifiedDate3 ,:PurchaseOrderID2 ,:PurchaseOrderDetailID ,:DueDat
+     e ,:OrderQty ,:ProductID2 ,:UnitPrice ,:LineTotal ,:ReceivedQty ,:Rejected
+     Qty ,:StockedQty ,:ModifiedDate4 ,:ShipMethodID2 ,:Name2 ,:ShipBase ,:Ship
+     Rate ,:rowguid ,:ModifiedDate5
+     
+     );
+
+**** 01:20:01 Number of recs/msg: 2
+**** 01:20:01 Starting to send to RDBMS with record 2
+**** 01:20:01 Sending row 1001
+**** 01:20:02 Sending row 2001
+**** 01:20:02 Sending row 3001
+**** 01:20:02 Sending row 4001
+**** 01:20:02 Sending row 5001
+**** 01:20:02 Sending row 6001
+**** 01:20:02 Sending row 7001
+**** 01:20:02 Sending row 8001
+**** 01:20:02 Sending row 9001
+**** 01:20:02 Sending row 10001
+**** 01:20:03 Sending row 11001
+**** 01:20:03 Sending row 12001
+**** 01:20:03 Sending row 13001
+**** 01:20:03 Sending row 14001
+**** 01:20:03 Sending row 15001
+**** 01:20:03 Sending row 16001
+**** 01:20:03 Sending row 17001
+**** 01:20:03 Sending row 18001
+**** 01:20:03 Sending row 19001
+**** 01:20:04 Sending row 20001
+**** 01:20:04 Sending row 21001
+**** 01:20:04 Sending row 22001
+**** 01:20:04 Sending row 23001
+**** 01:20:04 Sending row 24001
+**** 01:20:04 Sending row 25001
+**** 01:20:04 Sending row 26001
+**** 01:20:04 Sending row 27001
+**** 01:20:04 Sending row 28001
+**** 01:20:04 Sending row 29001
+**** 01:20:05 Sending row 30001
+**** 01:20:05 Sending row 31001
+**** 01:20:05 Sending row 32001
+**** 01:20:05 Sending row 33001
+**** 01:20:05 Sending row 34001
+**** 01:20:05 Sending row 35001
+**** 01:20:05 Sending row 36001
+**** 01:20:05 Sending row 37001
+**** 01:20:05 Sending row 38001
+**** 01:20:05 Sending row 39001
+**** 01:20:06 Sending row 40001
+**** 01:20:06 Sending row 41001
+**** 01:20:06 Sending row 42001
+**** 01:20:06 Sending row 43001
+**** 01:20:06 Sending row 44001
+**** 01:20:06 Sending row 45001
+**** 01:20:06 Sending row 46001
+**** 01:20:07 Sending row 47001
+**** 01:20:07 Sending row 48001
+**** 01:20:07 Sending row 49001
+**** 01:20:07 Sending row 50001
+**** 01:20:07 Sending row 51001
+**** 01:20:07 Sending row 52001
+**** 01:20:08 Sending row 53001
+**** 01:20:08 Sending row 54001
+**** 01:20:08 Sending row 55001
+**** 01:20:08 Sending row 56001
+**** 01:20:08 Sending row 57001
+**** 01:20:08 Sending row 58001
+**** 01:20:08 Sending row 59001
+**** 01:20:08 Sending row 60001
+**** 01:20:09 Sending row 61001
+**** 01:20:09 Sending row 62001
+**** 01:20:09 Sending row 63001
+**** 01:20:09 Sending row 64001
+**** 01:20:09 Sending row 65001
+**** 01:20:09 Sending row 66001
+**** 01:20:09 Sending row 67001
+**** 01:20:09 Sending row 68001
+**** 01:20:09 Sending row 69001
+**** 01:20:10 Sending row 70001
+**** 01:20:10 Sending row 71001
+**** 01:20:10 Sending row 72001
+**** 01:20:10 Sending row 73001
+**** 01:20:10 Sending row 73785
+**** 01:20:10 Finished sending rows to the RDBMS
+
+**** 01:20:10 Acquisition Phase statistics:
+              Elapsed time: 00:00:09 (in hh:mm:ss)
+              CPU time:     0.90625 Seconds
+              MB/sec:       4.08
+              MB/cpusec:    40.48
+
+
+     ===================================================================
+     =                                                                 =
+     =          End Loading Phase                                      =
+     =                                                                 =
+     ===================================================================
+
+0014 end loading;
+
+**** 01:20:11 END LOADING COMPLETE
+
+     Total Records Read              =  73785
+      - skipped by RECORD command    =  1
+      - sent to the RDBMS            =  73784
+     Total Error Table 1             =  0  ---- Table has been dropped
+     Total Error Table 2             =  0  ---- Table has been dropped
+     Total Inserts Applied           =  73784
+     Total Duplicate Rows            =  0
+
+     Start:   Fri Jul 21 01:20:10 2023
+     End  :   Fri Jul 21 01:20:11 2023
+
+**** 01:20:11 Application Phase statistics:
+              Elapsed time: 00:00:01 (in hh:mm:ss)
+
+
+0015 .LOGOFF;
+
+     ===================================================================
+     =                                                                 =
+     =          Logoff/Disconnect                                      =
+     =                                                                 =
+     ===================================================================
+
+**** 01:20:11 Logging off all sessions
+**** 01:20:11 Total processor time used = '1.09375 Seconds'
+     .        Start : Fri Jul 21 01:19:56 2023
+     .        End   : Fri Jul 21 01:20:11 2023
+     .        Highest return code encountered = '0'.
+**** 01:20:11 FDL4818 FastLoad Terminated

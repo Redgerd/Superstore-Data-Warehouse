@@ -1,0 +1,271 @@
+     ===================================================================
+     =                                                                 =
+     =          FASTLOAD UTILITY     VERSION 16.20.00.05               =
+     =          PLATFORM WIN32                                         =
+     =          PID      6096                                          =
+     =                                                                 =
+     ===================================================================
+
+     ===================================================================
+     =                                                                 =
+     =          Copyright 1984-2020, Teradata Corporation.             =
+     =          ALL RIGHTS RESERVED.                                   =
+     =                                                                 =
+     ===================================================================
+
+**** 01:19:39 Processing starting at: Fri Jul 21 01:19:39 2023
+
+
+0001 .sessions 2;
+
+**** 01:19:39 FDL4866 SESSIONS command accepted
+
+0002 ERRLIMIT 40;
+
+**** 01:19:39 Error limit set to: 40
+
+     ===================================================================
+     =                                                                 =
+     =          Logon/Connection                                       =
+     =                                                                 =
+     ===================================================================
+
+0003 .LOGON 192.168.18.91/dbc,
+
+**** 01:19:39 Teradata Database Release: 16.20.32.23
+**** 01:19:39 Teradata Database Version: 16.20.32.23
+**** 01:19:39 Number of AMPs available: 2
+**** 01:19:39 Current CLI or RDBMS allows maximum row size: 64K
+**** 01:19:39 Character set for this job: ASCII
+
+0004 DATABASE DB_STG1;
+
+**** 01:19:40 Command completed successfully
+
+0005 .set record vartext "|"  QUOTE OPTIONAL '"';
+
+**** 01:19:40 Now set to read 'Variable-Length Text' records
+**** 01:19:40 Delimiter character(s) is set to '|'
+**** 01:19:40 Field values are optionally quoted with '"'
+**** 01:19:40 Command completed successfully
+
+
+0006 DROP TABLE Production;
+
+**** 01:19:40 RDBMS error 3807: Object 'Production' does not exist.
+
+0007 DROP TABLE Production_ERROR1;
+
+**** 01:19:40 RDBMS error 3807: Object 'Production_ERROR1' does not
+              exist.
+
+0008 DROP TABLE Production_ERROR2;
+
+**** 01:19:40 RDBMS error 3807: Object 'Production_ERROR2' does not
+              exist.
+
+
+0009 CREATE SET TABLE Production
+          (
+     
+     	 ProductID1 VARCHAR(500),Name1 VARCHAR(500),ProductNumber VARCHAR(500),Ma
+     keFlag VARCHAR(500),FinishedGoodsFlag VARCHAR(500),Color VARCHAR(500),Safe
+     tyStockLevel VARCHAR(500),ReorderPoint VARCHAR(500),StandardCost1 VARCHAR(
+     500),ListPrice1 VARCHAR(500),Size1 VARCHAR(500),SizeUnitMeasureCode VARCHA
+     R(500),WeightUnitMeasureCode VARCHAR(500),Weight VARCHAR(500),DaysToManufa
+     cture VARCHAR(500),ProductLine VARCHAR(500),Class1 VARCHAR(500),Style1 VAR
+     CHAR(500),ProductSubcategoryID1 VARCHAR(500),ProductModelID1 VARCHAR(500),
+     SellStartDate VARCHAR(500),SellEndDate VARCHAR(500),DiscontinuedDate VARCH
+     AR(500),rowguid1 VARCHAR(500),ModifiedDate1 VARCHAR(500),ProductReviewID V
+     ARCHAR(500),ProductID2 VARCHAR(500),ReviewerName VARCHAR(500),ReviewDate V
+     ARCHAR(500),EmailAddress VARCHAR(500),Rating VARCHAR(500),Comments VARCHAR
+     (5000),ModifiedDate2 VARCHAR(500),ProductID3 VARCHAR(500),StartDate1 VARCH
+     AR(500),EndDate1 VARCHAR(500),ListPrice2 VARCHAR(500),ModifiedDate3 VARCHA
+     R(500),ProductSubcategoryID2 VARCHAR(500),ProductCategoryID1 VARCHAR(500),
+     Name2 VARCHAR(500),rowguid2 VARCHAR(500),ModifiedDate4 VARCHAR(500),Produc
+     tCategoryID2 VARCHAR(500),Name3 VARCHAR(500),rowguid3 VARCHAR(500),Modifie
+     dDate5 VARCHAR(500),ProductID4 VARCHAR(500),StartDate2 VARCHAR(500),EndDat
+     e2 VARCHAR(500),StandardCost2 VARCHAR(500),ModifiedDate6 VARCHAR(500),Prod
+     uctID5 VARCHAR(500),LocationID1 VARCHAR(500),Shelf VARCHAR(500),Bin VARCHA
+     R(500),Quantity VARCHAR(500),rowguid4 VARCHAR(500),ModifiedDate7 VARCHAR(5
+     00),LocationID2 VARCHAR(500),Name4 VARCHAR(500),CostRate VARCHAR(500),Avai
+     lability VARCHAR(500),ModifiedDate8 VARCHAR(500),ProductModelID2 VARCHAR(5
+     00),Name5 VARCHAR(500),CatalogDescription VARCHAR(500),Instructions VARCHA
+     R(500),rowguid5 VARCHAR(500),ModifiedDate9 VARCHAR(500),ProductID6 VARCHAR
+     (500),DocumentNode1 VARCHAR(500),ModifiedDate10 VARCHAR(500),DocumentNode2
+      VARCHAR(500),DocumentLevel VARCHAR(500),Title1 VARCHAR(500),Owner1 VARCHA
+     R(500),FolderFlag VARCHAR(500),FileName VARCHAR(500),FileExtension VARCHAR
+     (500),Revision VARCHAR(500),ChangeNumber VARCHAR(500),Status VARCHAR(500),
+     DocumentSummary VARCHAR(500),Document1 VARCHAR(500),rowguid6 VARCHAR(500),
+     ModifiedDate11 VARCHAR(500)
+     
+     	 );
+
+**** 01:19:40 Command completed successfully
+
+
+0010 RECORD 2;
+
+**** 01:19:40 Starting record number set to  : 2
+
+
+0011 DEFINE
+     
+     ProductID1 (VARCHAR(500)) Name1 (VARCHAR(500)) ProductNumber (VARCHAR(500)
+     ) MakeFlag (VARCHAR(500)) FinishedGoodsFlag (VARCHAR(500)) Color (VARCHAR(
+     500)) SafetyStockLevel (VARCHAR(500)) ReorderPoint (VARCHAR(500)) Standard
+     Cost1 (VARCHAR(500)) ListPrice1 (VARCHAR(500)) Size1 (VARCHAR(500)) SizeUn
+     itMeasureCode (VARCHAR(500)) WeightUnitMeasureCode (VARCHAR(500)) Weight (
+     VARCHAR(500)) DaysToManufacture (VARCHAR(500)) ProductLine (VARCHAR(500)) 
+     Class1 (VARCHAR(500)) Style1 (VARCHAR(500)) ProductSubcategoryID1 (VARCHAR
+     (500)) ProductModelID1 (VARCHAR(500)) SellStartDate (VARCHAR(500)) SellEnd
+     Date (VARCHAR(500)) DiscontinuedDate (VARCHAR(500)) rowguid1 (VARCHAR(500)
+     ) ModifiedDate1 (VARCHAR(500)) ProductReviewID (VARCHAR(500)) ProductID2 (
+     VARCHAR(500)) ReviewerName (VARCHAR(500)) ReviewDate (VARCHAR(500)) EmailA
+     ddress (VARCHAR(500)) Rating (VARCHAR(500)) Comments (VARCHAR(5000)) Modif
+     iedDate2 (VARCHAR(500)) ProductID3 (VARCHAR(500)) StartDate1 (VARCHAR(500)
+     ) EndDate1 (VARCHAR(500)) ListPrice2 (VARCHAR(500)) ModifiedDate3 (VARCHAR
+     (500)) ProductSubcategoryID2 (VARCHAR(500)) ProductCategoryID1 (VARCHAR(50
+     0)) Name2 (VARCHAR(500)) rowguid2 (VARCHAR(500)) ModifiedDate4 (VARCHAR(50
+     0)) ProductCategoryID2 (VARCHAR(500)) Name3 (VARCHAR(500)) rowguid3 (VARCH
+     AR(500)) ModifiedDate5 (VARCHAR(500)) ProductID4 (VARCHAR(500)) StartDate2
+      (VARCHAR(500)) EndDate2 (VARCHAR(500)) StandardCost2 (VARCHAR(500)) Modif
+     iedDate6 (VARCHAR(500)) ProductID5 (VARCHAR(500)) LocationID1 (VARCHAR(500
+     )) Shelf (VARCHAR(500)) Bin (VARCHAR(500)) Quantity (VARCHAR(500)) rowguid
+     4 (VARCHAR(500)) ModifiedDate7 (VARCHAR(500)) LocationID2 (VARCHAR(500)) N
+     ame4 (VARCHAR(500)) CostRate (VARCHAR(500)) Availability (VARCHAR(500)) Mo
+     difiedDate8 (VARCHAR(500)) ProductModelID2 (VARCHAR(500)) Name5 (VARCHAR(5
+     00)) CatalogDescription (VARCHAR(500)) Instructions (VARCHAR(500)) rowguid
+     5 (VARCHAR(500)) ModifiedDate9 (VARCHAR(500)) ProductID6 (VARCHAR(500)) Do
+     cumentNode1 (VARCHAR(500)) ModifiedDate10 (VARCHAR(500)) DocumentNode2 (VA
+     RCHAR(500)) DocumentLevel (VARCHAR(500)) Title1 (VARCHAR(500)) Owner1 (VAR
+     CHAR(500)) FolderFlag (VARCHAR(500)) FileName (VARCHAR(500)) FileExtension
+      (VARCHAR(500)) Revision (VARCHAR(500)) ChangeNumber (VARCHAR(500)) Status
+      (VARCHAR(500)) DocumentSummary (VARCHAR(500)) Document1 (VARCHAR(500)) ro
+     wguid6 (VARCHAR(500)) ModifiedDate11 (VARCHAR(500))
+     
+     
+     
+     FILE="F:\ADW 2017\ADW 2017\Production.csv";
+
+**** 01:19:40 FDL4803 DEFINE statement processed
+
+
+0012 begin loading
+     Production
+     errorfiles
+     Production_ERROR1,
+     Production_ERROR2
+     
+     
+     CHECKPOINT 1000;
+
+**** 01:19:40 Number of FastLoad sessions requested = 2
+**** 01:19:40 Number of FastLoad sessions connected = 2
+**** 01:19:40 FDL4808 LOGON successful
+**** 01:19:40 Number of AMPs available: 2
+**** 01:19:40 BEGIN LOADING COMPLETE
+
+
+     ===================================================================
+     =                                                                 =
+     =          Insert Phase                                           =
+     =                                                                 =
+     ===================================================================
+
+0013 insert into Production
+     (
+     
+     ProductID1,Name1,ProductNumber,MakeFlag,FinishedGoodsFlag,Color,SafetyStoc
+     kLevel,ReorderPoint,StandardCost1,ListPrice1,Size1,SizeUnitMeasureCode,Wei
+     ghtUnitMeasureCode,Weight,DaysToManufacture,ProductLine,Class1,Style1,Prod
+     uctSubcategoryID1,ProductModelID1,SellStartDate,SellEndDate,DiscontinuedDa
+     te,rowguid1,ModifiedDate1,ProductReviewID,ProductID2,ReviewerName,ReviewDa
+     te,EmailAddress,Rating,Comments,ModifiedDate2,ProductID3,StartDate1,EndDat
+     e1,ListPrice2,ModifiedDate3,ProductSubcategoryID2,ProductCategoryID1,Name2
+     ,rowguid2,ModifiedDate4,ProductCategoryID2,Name3,rowguid3,ModifiedDate5,Pr
+     oductID4,StartDate2,EndDate2,StandardCost2,ModifiedDate6,ProductID5,Locati
+     onID1,Shelf,Bin,Quantity,rowguid4,ModifiedDate7,LocationID2,Name4,CostRate
+     ,Availability,ModifiedDate8,ProductModelID2,Name5,CatalogDescription,Instr
+     uctions,rowguid5,ModifiedDate9,ProductID6,DocumentNode1,ModifiedDate10,Doc
+     umentNode2,DocumentLevel,Title1,Owner1,FolderFlag,FileName,FileExtension,R
+     evision,ChangeNumber,Status,DocumentSummary,Document1,rowguid6,ModifiedDat
+     e11
+     
+     )
+     values
+     
+     (
+     
+     :ProductID1 ,:Name1 ,:ProductNumber ,:MakeFlag ,:FinishedGoodsFlag ,:Color
+      ,:SafetyStockLevel ,:ReorderPoint ,:StandardCost1 ,:ListPrice1 ,:Size1 ,:
+     SizeUnitMeasureCode ,:WeightUnitMeasureCode ,:Weight ,:DaysToManufacture ,
+     :ProductLine ,:Class1 ,:Style1 ,:ProductSubcategoryID1 ,:ProductModelID1 ,
+     :SellStartDate ,:SellEndDate ,:DiscontinuedDate ,:rowguid1 ,:ModifiedDate1
+      ,:ProductReviewID ,:ProductID2 ,:ReviewerName ,:ReviewDate ,:EmailAddress
+      ,:Rating ,:Comments ,:ModifiedDate2 ,:ProductID3 ,:StartDate1 ,:EndDate1 
+     ,:ListPrice2 ,:ModifiedDate3 ,:ProductSubcategoryID2 ,:ProductCategoryID1 
+     ,:Name2 ,:rowguid2 ,:ModifiedDate4 ,:ProductCategoryID2 ,:Name3 ,:rowguid3
+      ,:ModifiedDate5 ,:ProductID4 ,:StartDate2 ,:EndDate2 ,:StandardCost2 ,:Mo
+     difiedDate6 ,:ProductID5 ,:LocationID1 ,:Shelf ,:Bin ,:Quantity ,:rowguid4
+      ,:ModifiedDate7 ,:LocationID2 ,:Name4 ,:CostRate ,:Availability ,:Modifie
+     dDate8 ,:ProductModelID2 ,:Name5 ,:CatalogDescription ,:Instructions ,:row
+     guid5 ,:ModifiedDate9 ,:ProductID6 ,:DocumentNode1 ,:ModifiedDate10 ,:Docu
+     mentNode2 ,:DocumentLevel ,:Title1 ,:Owner1 ,:FolderFlag ,:FileName ,:File
+     Extension ,:Revision ,:ChangeNumber ,:Status ,:DocumentSummary ,:Document1
+      ,:rowguid6 ,:ModifiedDate11
+     
+     );
+
+**** 01:19:40 Number of recs/msg: 1
+**** 01:19:40 Starting to send to RDBMS with record 2
+**** 01:19:40 Sending row 1001
+**** 01:19:41 Sending row 1735
+**** 01:19:41 Finished sending rows to the RDBMS
+
+**** 01:19:41 Acquisition Phase statistics:
+              Elapsed time: 00:00:01 (in hh:mm:ss)
+              CPU time:     0.078125 Seconds
+              MB/sec:       1.44
+              MB/cpusec:    18.46
+
+
+     ===================================================================
+     =                                                                 =
+     =          End Loading Phase                                      =
+     =                                                                 =
+     ===================================================================
+
+0014 end loading;
+
+**** 01:19:41 END LOADING COMPLETE
+
+     Total Records Read              =  1735
+      - skipped by RECORD command    =  1
+      - sent to the RDBMS            =  1734
+     Total Error Table 1             =  0  ---- Table has been dropped
+     Total Error Table 2             =  0  ---- Table has been dropped
+     Total Inserts Applied           =  1734
+     Total Duplicate Rows            =  0
+
+     Start:   Fri Jul 21 01:19:41 2023
+     End  :   Fri Jul 21 01:19:41 2023
+
+**** 01:19:41 Application Phase statistics:
+              Elapsed time: 00:00:00 (in hh:mm:ss)
+
+
+0015 .LOGOFF;
+
+     ===================================================================
+     =                                                                 =
+     =          Logoff/Disconnect                                      =
+     =                                                                 =
+     ===================================================================
+
+**** 01:19:41 Logging off all sessions
+**** 01:19:41 Total processor time used = '0.21875 Seconds'
+     .        Start : Fri Jul 21 01:19:39 2023
+     .        End   : Fri Jul 21 01:19:41 2023
+     .        Highest return code encountered = '0'.
+**** 01:19:41 FDL4818 FastLoad Terminated

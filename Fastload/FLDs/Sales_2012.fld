@@ -1,0 +1,490 @@
+ 
+.sessions 2;
+ERRLIMIT 40;
+.LOGON 192.168.18.91/dbc,dbc;
+DATABASE DB_STG1;
+.set record vartext ",";
+
+
+DROP TABLE Sales_2012;
+DROP TABLE Sales_2012_ERROR1;
+DROP TABLE Sales_2012_ERROR2; 
+
+CREATE SET TABLE Sales_2012,NO FALLBACK ,
+     NO BEFORE JOURNAL,
+     NO AFTER JOURNAL
+     (
+
+SalesOrderID	varchar(100),
+RevisionNumber	varchar(100),
+OrderDate	varchar(100),
+DueDate	varchar(100),
+ShipDate	varchar(100),
+Status	varchar(100),
+OnlineOrderFlag	varchar(100),
+SalesOrderNumber	varchar(100),
+PurchaseOrderNumber	varchar(100),
+AccountNumber	varchar(100),
+CustomerID	varchar(100),
+SalesPersonID	varchar(100),
+TerritoryID	varchar(100),
+BillToAddressID	varchar(100),
+ShipToAddressID	varchar(100),
+ShipMethodID	varchar(100),
+CreditCardID	varchar(100),
+CreditCardApprovalCode	varchar(100),
+CurrencyRateID	varchar(100),
+SubTotal	varchar(100),
+TaxAmt	varchar(100),
+Freight	varchar(100),
+TotalDue	varchar(100),
+Comment_	varchar(100),
+rowguid	varchar(100),
+ModifiedDate	varchar(100),
+SalesOrderID2	varchar(100),
+SalesReasonID	varchar(100),
+ModifiedDate2	varchar(100),
+SalesReasonID2	varchar(100),
+Name	varchar(100),
+ReasonType_	varchar(100),
+ModifiedDate3	varchar(100),
+SalesOrderID3	varchar(100),
+SalesOrderDetailID	varchar(100),
+CarrierTrackingNumber	varchar(100),
+OrderQty	varchar(100),
+ProductID	varchar(100),
+SpecialOfferID	varchar(100),
+UnitPrice	varchar(100),
+UnitPriceDiscount	varchar(100),
+LineTotal	varchar(100),
+rowguid2	varchar(100),
+ModifiedDate4	varchar(100),
+SpecialOfferID2	varchar(100),
+Description	varchar(100),
+DiscountPct	varchar(100),
+Type_	varchar(100),
+Category	varchar(100),
+StartDate	varchar(100),
+EndDate	varchar(100),
+MinQty	varchar(100),
+MaxQty	varchar(100),
+rowguid3	varchar(100),
+ModifiedDate5	varchar(100),
+SpecialOfferID3	varchar(100),
+ProductID2	varchar(100),
+rowguid4	varchar(100),
+ModifiedDate6	varchar(100),
+CurrencyRateID2	varchar(100),
+CurrencyRateDate	varchar(100),
+FromCurrencyCode	varchar(100),
+ToCurrencyCode	varchar(100),
+AverageRate	varchar(100),
+EndOfDayRate	varchar(100),
+ModifiedDate7	varchar(100),
+CurrencyCode	varchar(100),
+Name2	varchar(100),
+ModifiedDate8	varchar(100),
+CreditCardID2	varchar(100),
+CardType_	varchar(100),
+CardNumber	varchar(100),
+ExpMonth	varchar(100),
+ExpYear	varchar(100),
+ModifiedDate9	varchar(100),
+BusinessEntityID	varchar(100),
+CreditCardID3	varchar(100),
+ModifiedDate10	varchar(100),
+TerritoryID2	varchar(100),
+Name3	varchar(100),
+CountryRegionCode	varchar(100),
+Group_	varchar(100),
+SalesYTD	varchar(100),
+SalesLastYear	varchar(100),
+CostYTD	varchar(100),
+CostLastYear	varchar(100),
+rowguid5	varchar(100),
+ModifiedDate11	varchar(100),
+BusinessEntityID2	varchar(100),
+TerritoryID3	varchar(100),
+StartDate2	varchar(100),
+EndDate2	varchar(100),
+rowguid6	varchar(100),
+ModifiedDate12	varchar(100),
+BusinessEntityID3	varchar(100),
+QuotaDate	varchar(100),
+SalesQuota	varchar(100),
+rowguid7	varchar(100),
+ModifiedDate13	varchar(100),
+BusinessEntityID4	varchar(100),
+TerritoryID4	varchar(100),
+SalesQuota2	varchar(100),
+Bonus	varchar(100),
+CommissionPct	varchar(100),
+SalesYTD2	varchar(100),
+SalesLastYear2	varchar(100),
+rowguid8	varchar(100),
+ModifiedDate14	varchar(100)
+ 
+ );
+
+
+
+
+RECORD 2 THRU 1193074 ;
+
+DEFINE
+
+
+SalesOrderID	(varchar(100))
+RevisionNumber	(varchar(100))
+OrderDate	(varchar(100))
+DueDate	(varchar(100))
+ShipDate	(varchar(100))
+Status	(varchar(100))
+OnlineOrderFlag	(varchar(100))
+SalesOrderNumber	(varchar(100))
+PurchaseOrderNumber	(varchar(100))
+AccountNumber	(varchar(100))
+CustomerID	(varchar(100))
+SalesPersonID	(varchar(100))
+TerritoryID	(varchar(100))
+BillToAddressID	(varchar(100))
+ShipToAddressID	(varchar(100))
+ShipMethodID	(varchar(100))
+CreditCardID	(varchar(100))
+CreditCardApprovalCode	(varchar(100))
+CurrencyRateID	(varchar(100))
+SubTotal	(varchar(100))
+TaxAmt	(varchar(100))
+Freight	(varchar(100))
+TotalDue	(varchar(100))
+Comment_	(varchar(100))
+rowguid	(varchar(100))
+ModifiedDate	(varchar(100))
+SalesOrderID2	(varchar(100))
+SalesReasonID	(varchar(100))
+ModifiedDate2	(varchar(100))
+SalesReasonID2	(varchar(100))
+Name	(varchar(100))
+ReasonType_	(varchar(100))
+ModifiedDate3	(varchar(100))
+SalesOrderID3	(varchar(100))
+SalesOrderDetailID	(varchar(100))
+CarrierTrackingNumber	(varchar(100))
+OrderQty	(varchar(100))
+ProductID	(varchar(100))
+SpecialOfferID	(varchar(100))
+UnitPrice	(varchar(100))
+UnitPriceDiscount	(varchar(100))
+LineTotal	(varchar(100))
+rowguid2	(varchar(100))
+ModifiedDate4	(varchar(100))
+SpecialOfferID2	(varchar(100))
+Description	(varchar(100))
+DiscountPct	(varchar(100))
+Type_	(varchar(100))
+Category	(varchar(100))
+StartDate	(varchar(100))
+EndDate	(varchar(100))
+MinQty	(varchar(100))
+MaxQty	(varchar(100))
+rowguid3	(varchar(100))
+ModifiedDate5	(varchar(100))
+SpecialOfferID3	(varchar(100))
+ProductID2	(varchar(100))
+rowguid4	(varchar(100))
+ModifiedDate6	(varchar(100))
+CurrencyRateID2	(varchar(100))
+CurrencyRateDate	(varchar(100))
+FromCurrencyCode	(varchar(100))
+ToCurrencyCode	(varchar(100))
+AverageRate	(varchar(100))
+EndOfDayRate	(varchar(100))
+ModifiedDate7	(varchar(100))
+CurrencyCode	(varchar(100))
+Name2	(varchar(100))
+ModifiedDate8	(varchar(100))
+CreditCardID2	(varchar(100))
+CardType_	(varchar(100))
+CardNumber	(varchar(100))
+ExpMonth	(varchar(100))
+ExpYear	(varchar(100))
+ModifiedDate9	(varchar(100))
+BusinessEntityID	(varchar(100))
+CreditCardID3	(varchar(100))
+ModifiedDate10	(varchar(100))
+TerritoryID2	(varchar(100))
+Name3	(varchar(100))
+CountryRegionCode	(varchar(100))
+Group_	(varchar(100))
+SalesYTD	(varchar(100))
+SalesLastYear	(varchar(100))
+CostYTD	(varchar(100))
+CostLastYear	(varchar(100))
+rowguid5	(varchar(100))
+ModifiedDate11	(varchar(100))
+BusinessEntityID2	(varchar(100))
+TerritoryID3	(varchar(100))
+StartDate2	(varchar(100))
+EndDate2	(varchar(100))
+rowguid6	(varchar(100))
+ModifiedDate12	(varchar(100))
+BusinessEntityID3	(varchar(100))
+QuotaDate	(varchar(100))
+SalesQuota	(varchar(100))
+rowguid7	(varchar(100))
+ModifiedDate13	(varchar(100))
+BusinessEntityID4	(varchar(100))
+TerritoryID4	(varchar(100))
+SalesQuota2	(varchar(100))
+Bonus	(varchar(100))
+CommissionPct	(varchar(100))
+SalesYTD2	(varchar(100))
+SalesLastYear2	(varchar(100))
+rowguid8	(varchar(100))
+ModifiedDate14	(varchar(100))
+
+
+
+FILE="F:\ADW 2017\ADW 2017\Sales_2012.csv";
+      
+begin loading
+Sales_2012
+errorfiles
+Sales_2012_ERROR1
+,Sales_2012_ERROR2
+
+
+CHECKPOINT 100000;
+
+insert into Sales_2012(
+
+SalesOrderID,
+RevisionNumber,
+OrderDate,
+DueDate,
+ShipDate,
+Status,
+OnlineOrderFlag,
+SalesOrderNumber,
+PurchaseOrderNumber,
+AccountNumber,
+CustomerID,
+SalesPersonID,
+TerritoryID,
+BillToAddressID,
+ShipToAddressID,
+ShipMethodID,
+CreditCardID,
+CreditCardApprovalCode,
+CurrencyRateID,
+SubTotal,
+TaxAmt,
+Freight,
+TotalDue,
+Comment_,
+rowguid,
+ModifiedDate,
+SalesOrderID2,
+SalesReasonID,
+ModifiedDate2,
+SalesReasonID2,
+Name,
+ReasonType_,
+ModifiedDate3,
+SalesOrderID3,
+SalesOrderDetailID,
+CarrierTrackingNumber,
+OrderQty,
+ProductID,
+SpecialOfferID,
+UnitPrice,
+UnitPriceDiscount,
+LineTotal,
+rowguid2,
+ModifiedDate4,
+SpecialOfferID2,
+Description,
+DiscountPct,
+Type_,
+Category,
+StartDate,
+EndDate,
+MinQty,
+MaxQty,
+rowguid3,
+ModifiedDate5,
+SpecialOfferID3,
+ProductID2,
+rowguid4,
+ModifiedDate6,
+CurrencyRateID2,
+CurrencyRateDate,
+FromCurrencyCode,
+ToCurrencyCode,
+AverageRate,
+EndOfDayRate,
+ModifiedDate7,
+CurrencyCode,
+Name2,
+ModifiedDate8,
+CreditCardID2,
+CardType_,
+CardNumber,
+ExpMonth,
+ExpYear,
+ModifiedDate9,
+BusinessEntityID,
+CreditCardID3,
+ModifiedDate10,
+TerritoryID2,
+Name3,
+CountryRegionCode,
+Group_,
+SalesYTD,
+SalesLastYear,
+CostYTD,
+CostLastYear,
+rowguid5,
+ModifiedDate11,
+BusinessEntityID2,
+TerritoryID3,
+StartDate2,
+EndDate2,
+rowguid6,
+ModifiedDate12,
+BusinessEntityID3,
+QuotaDate,
+SalesQuota,
+rowguid7,
+ModifiedDate13,
+BusinessEntityID4,
+TerritoryID4,
+SalesQuota2,
+Bonus,
+CommissionPct,
+SalesYTD2,
+SalesLastYear2,
+rowguid8,
+ModifiedDate14
+ 
+)
+values
+
+(
+
+:SalesOrderID ,
+:RevisionNumber ,
+:OrderDate ,
+:DueDate ,
+:ShipDate ,
+:Status ,
+:OnlineOrderFlag ,
+:SalesOrderNumber ,
+:PurchaseOrderNumber ,
+:AccountNumber ,
+:CustomerID ,
+:SalesPersonID ,
+:TerritoryID ,
+:BillToAddressID ,
+:ShipToAddressID ,
+:ShipMethodID ,
+:CreditCardID ,
+:CreditCardApprovalCode ,
+:CurrencyRateID ,
+:SubTotal ,
+:TaxAmt ,
+:Freight ,
+:TotalDue ,
+:Comment_ ,
+:rowguid ,
+:ModifiedDate ,
+:SalesOrderID2 ,
+:SalesReasonID ,
+:ModifiedDate2 ,
+:SalesReasonID2 ,
+:Name ,
+:ReasonType_ ,
+:ModifiedDate3 ,
+:SalesOrderID3 ,
+:SalesOrderDetailID ,
+:CarrierTrackingNumber ,
+:OrderQty ,
+:ProductID ,
+:SpecialOfferID ,
+:UnitPrice ,
+:UnitPriceDiscount ,
+:LineTotal ,
+:rowguid2 ,
+:ModifiedDate4 ,
+:SpecialOfferID2 ,
+:Description ,
+:DiscountPct ,
+:Type_ ,
+:Category ,
+:StartDate ,
+:EndDate ,
+:MinQty ,
+:MaxQty ,
+:rowguid3 ,
+:ModifiedDate5 ,
+:SpecialOfferID3 ,
+:ProductID2 ,
+:rowguid4 ,
+:ModifiedDate6 ,
+:CurrencyRateID2 ,
+:CurrencyRateDate ,
+:FromCurrencyCode ,
+:ToCurrencyCode ,
+:AverageRate ,
+:EndOfDayRate ,
+:ModifiedDate7 ,
+:CurrencyCode ,
+:Name2 ,
+:ModifiedDate8 ,
+:CreditCardID2 ,
+:CardType_ ,
+:CardNumber ,
+:ExpMonth ,
+:ExpYear ,
+:ModifiedDate9 ,
+:BusinessEntityID ,
+:CreditCardID3 ,
+:ModifiedDate10 ,
+:TerritoryID2 ,
+:Name3 ,
+:CountryRegionCode ,
+:Group_ ,
+:SalesYTD ,
+:SalesLastYear ,
+:CostYTD ,
+:CostLastYear ,
+:rowguid5 ,
+:ModifiedDate11 ,
+:BusinessEntityID2 ,
+:TerritoryID3 ,
+:StartDate2 ,
+:EndDate2 ,
+:rowguid6 ,
+:ModifiedDate12 ,
+:BusinessEntityID3 ,
+:QuotaDate ,
+:SalesQuota ,
+:rowguid7 ,
+:ModifiedDate13 ,
+:BusinessEntityID4 ,
+:TerritoryID4 ,
+:SalesQuota2 ,
+:Bonus ,
+:CommissionPct ,
+:SalesYTD2 ,
+:SalesLastYear2 ,
+:rowguid8 ,
+:ModifiedDate14 
+ 
+
+);
+
+
+end loading;
+
+.LOGOFF; 

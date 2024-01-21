@@ -1,0 +1,60 @@
+ 
+.sessions 2;
+ERRLIMIT 40;
+.LOGON 192.168.18.91/dbc,dbc;
+DATABASE DB_STG1;
+.set record vartext "|"  QUOTE OPTIONAL '"';
+
+
+
+DROP TABLE Production;
+DROP TABLE Production_ERROR1;
+DROP TABLE Production_ERROR2; 
+
+CREATE SET TABLE Production
+     (
+	 
+	 ProductID1 VARCHAR(500),Name1 VARCHAR(500),ProductNumber VARCHAR(500),MakeFlag VARCHAR(500),FinishedGoodsFlag VARCHAR(500),Color VARCHAR(500),SafetyStockLevel VARCHAR(500),ReorderPoint VARCHAR(500),StandardCost1 VARCHAR(500),ListPrice1 VARCHAR(500),Size1 VARCHAR(500),SizeUnitMeasureCode VARCHAR(500),WeightUnitMeasureCode VARCHAR(500),Weight VARCHAR(500),DaysToManufacture VARCHAR(500),ProductLine VARCHAR(500),Class1 VARCHAR(500),Style1 VARCHAR(500),ProductSubcategoryID1 VARCHAR(500),ProductModelID1 VARCHAR(500),SellStartDate VARCHAR(500),SellEndDate VARCHAR(500),DiscontinuedDate VARCHAR(500),rowguid1 VARCHAR(500),ModifiedDate1 VARCHAR(500),ProductReviewID VARCHAR(500),ProductID2 VARCHAR(500),ReviewerName VARCHAR(500),ReviewDate VARCHAR(500),EmailAddress VARCHAR(500),Rating VARCHAR(500),Comments VARCHAR(5000),ModifiedDate2 VARCHAR(500),ProductID3 VARCHAR(500),StartDate1 VARCHAR(500),EndDate1 VARCHAR(500),ListPrice2 VARCHAR(500),ModifiedDate3 VARCHAR(500),ProductSubcategoryID2 VARCHAR(500),ProductCategoryID1 VARCHAR(500),Name2 VARCHAR(500),rowguid2 VARCHAR(500),ModifiedDate4 VARCHAR(500),ProductCategoryID2 VARCHAR(500),Name3 VARCHAR(500),rowguid3 VARCHAR(500),ModifiedDate5 VARCHAR(500),ProductID4 VARCHAR(500),StartDate2 VARCHAR(500),EndDate2 VARCHAR(500),StandardCost2 VARCHAR(500),ModifiedDate6 VARCHAR(500),ProductID5 VARCHAR(500),LocationID1 VARCHAR(500),Shelf VARCHAR(500),Bin VARCHAR(500),Quantity VARCHAR(500),rowguid4 VARCHAR(500),ModifiedDate7 VARCHAR(500),LocationID2 VARCHAR(500),Name4 VARCHAR(500),CostRate VARCHAR(500),Availability VARCHAR(500),ModifiedDate8 VARCHAR(500),ProductModelID2 VARCHAR(500),Name5 VARCHAR(500),CatalogDescription VARCHAR(500),Instructions VARCHAR(500),rowguid5 VARCHAR(500),ModifiedDate9 VARCHAR(500),ProductID6 VARCHAR(500),DocumentNode1 VARCHAR(500),ModifiedDate10 VARCHAR(500),DocumentNode2 VARCHAR(500),DocumentLevel VARCHAR(500),Title1 VARCHAR(500),Owner1 VARCHAR(500),FolderFlag VARCHAR(500),FileName VARCHAR(500),FileExtension VARCHAR(500),Revision VARCHAR(500),ChangeNumber VARCHAR(500),Status VARCHAR(500),DocumentSummary VARCHAR(500),Document1 VARCHAR(500),rowguid6 VARCHAR(500),ModifiedDate11 VARCHAR(500)
+	 
+	 );
+
+
+
+RECORD 2;
+
+DEFINE
+
+ProductID1 (VARCHAR(500)) Name1 (VARCHAR(500)) ProductNumber (VARCHAR(500)) MakeFlag (VARCHAR(500)) FinishedGoodsFlag (VARCHAR(500)) Color (VARCHAR(500)) SafetyStockLevel (VARCHAR(500)) ReorderPoint (VARCHAR(500)) StandardCost1 (VARCHAR(500)) ListPrice1 (VARCHAR(500)) Size1 (VARCHAR(500)) SizeUnitMeasureCode (VARCHAR(500)) WeightUnitMeasureCode (VARCHAR(500)) Weight (VARCHAR(500)) DaysToManufacture (VARCHAR(500)) ProductLine (VARCHAR(500)) Class1 (VARCHAR(500)) Style1 (VARCHAR(500)) ProductSubcategoryID1 (VARCHAR(500)) ProductModelID1 (VARCHAR(500)) SellStartDate (VARCHAR(500)) SellEndDate (VARCHAR(500)) DiscontinuedDate (VARCHAR(500)) rowguid1 (VARCHAR(500)) ModifiedDate1 (VARCHAR(500)) ProductReviewID (VARCHAR(500)) ProductID2 (VARCHAR(500)) ReviewerName (VARCHAR(500)) ReviewDate (VARCHAR(500)) EmailAddress (VARCHAR(500)) Rating (VARCHAR(500)) Comments (VARCHAR(5000)) ModifiedDate2 (VARCHAR(500)) ProductID3 (VARCHAR(500)) StartDate1 (VARCHAR(500)) EndDate1 (VARCHAR(500)) ListPrice2 (VARCHAR(500)) ModifiedDate3 (VARCHAR(500)) ProductSubcategoryID2 (VARCHAR(500)) ProductCategoryID1 (VARCHAR(500)) Name2 (VARCHAR(500)) rowguid2 (VARCHAR(500)) ModifiedDate4 (VARCHAR(500)) ProductCategoryID2 (VARCHAR(500)) Name3 (VARCHAR(500)) rowguid3 (VARCHAR(500)) ModifiedDate5 (VARCHAR(500)) ProductID4 (VARCHAR(500)) StartDate2 (VARCHAR(500)) EndDate2 (VARCHAR(500)) StandardCost2 (VARCHAR(500)) ModifiedDate6 (VARCHAR(500)) ProductID5 (VARCHAR(500)) LocationID1 (VARCHAR(500)) Shelf (VARCHAR(500)) Bin (VARCHAR(500)) Quantity (VARCHAR(500)) rowguid4 (VARCHAR(500)) ModifiedDate7 (VARCHAR(500)) LocationID2 (VARCHAR(500)) Name4 (VARCHAR(500)) CostRate (VARCHAR(500)) Availability (VARCHAR(500)) ModifiedDate8 (VARCHAR(500)) ProductModelID2 (VARCHAR(500)) Name5 (VARCHAR(500)) CatalogDescription (VARCHAR(500)) Instructions (VARCHAR(500)) rowguid5 (VARCHAR(500)) ModifiedDate9 (VARCHAR(500)) ProductID6 (VARCHAR(500)) DocumentNode1 (VARCHAR(500)) ModifiedDate10 (VARCHAR(500)) DocumentNode2 (VARCHAR(500)) DocumentLevel (VARCHAR(500)) Title1 (VARCHAR(500)) Owner1 (VARCHAR(500)) FolderFlag (VARCHAR(500)) FileName (VARCHAR(500)) FileExtension (VARCHAR(500)) Revision (VARCHAR(500)) ChangeNumber (VARCHAR(500)) Status (VARCHAR(500)) DocumentSummary (VARCHAR(500)) Document1 (VARCHAR(500)) rowguid6 (VARCHAR(500)) ModifiedDate11 (VARCHAR(500))
+
+
+
+FILE="F:\ADW 2017\ADW 2017\Production.csv";
+
+
+begin loading
+Production
+errorfiles
+Production_ERROR1,
+Production_ERROR2
+
+
+CHECKPOINT 1000;
+
+insert into Production
+(
+
+ProductID1,Name1,ProductNumber,MakeFlag,FinishedGoodsFlag,Color,SafetyStockLevel,ReorderPoint,StandardCost1,ListPrice1,Size1,SizeUnitMeasureCode,WeightUnitMeasureCode,Weight,DaysToManufacture,ProductLine,Class1,Style1,ProductSubcategoryID1,ProductModelID1,SellStartDate,SellEndDate,DiscontinuedDate,rowguid1,ModifiedDate1,ProductReviewID,ProductID2,ReviewerName,ReviewDate,EmailAddress,Rating,Comments,ModifiedDate2,ProductID3,StartDate1,EndDate1,ListPrice2,ModifiedDate3,ProductSubcategoryID2,ProductCategoryID1,Name2,rowguid2,ModifiedDate4,ProductCategoryID2,Name3,rowguid3,ModifiedDate5,ProductID4,StartDate2,EndDate2,StandardCost2,ModifiedDate6,ProductID5,LocationID1,Shelf,Bin,Quantity,rowguid4,ModifiedDate7,LocationID2,Name4,CostRate,Availability,ModifiedDate8,ProductModelID2,Name5,CatalogDescription,Instructions,rowguid5,ModifiedDate9,ProductID6,DocumentNode1,ModifiedDate10,DocumentNode2,DocumentLevel,Title1,Owner1,FolderFlag,FileName,FileExtension,Revision,ChangeNumber,Status,DocumentSummary,Document1,rowguid6,ModifiedDate11
+ 
+)
+values
+
+(
+
+:ProductID1 ,:Name1 ,:ProductNumber ,:MakeFlag ,:FinishedGoodsFlag ,:Color ,:SafetyStockLevel ,:ReorderPoint ,:StandardCost1 ,:ListPrice1 ,:Size1 ,:SizeUnitMeasureCode ,:WeightUnitMeasureCode ,:Weight ,:DaysToManufacture ,:ProductLine ,:Class1 ,:Style1 ,:ProductSubcategoryID1 ,:ProductModelID1 ,:SellStartDate ,:SellEndDate ,:DiscontinuedDate ,:rowguid1 ,:ModifiedDate1 ,:ProductReviewID ,:ProductID2 ,:ReviewerName ,:ReviewDate ,:EmailAddress ,:Rating ,:Comments ,:ModifiedDate2 ,:ProductID3 ,:StartDate1 ,:EndDate1 ,:ListPrice2 ,:ModifiedDate3 ,:ProductSubcategoryID2 ,:ProductCategoryID1 ,:Name2 ,:rowguid2 ,:ModifiedDate4 ,:ProductCategoryID2 ,:Name3 ,:rowguid3 ,:ModifiedDate5 ,:ProductID4 ,:StartDate2 ,:EndDate2 ,:StandardCost2 ,:ModifiedDate6 ,:ProductID5 ,:LocationID1 ,:Shelf ,:Bin ,:Quantity ,:rowguid4 ,:ModifiedDate7 ,:LocationID2 ,:Name4 ,:CostRate ,:Availability ,:ModifiedDate8 ,:ProductModelID2 ,:Name5 ,:CatalogDescription ,:Instructions ,:rowguid5 ,:ModifiedDate9 ,:ProductID6 ,:DocumentNode1 ,:ModifiedDate10 ,:DocumentNode2 ,:DocumentLevel ,:Title1 ,:Owner1 ,:FolderFlag ,:FileName ,:FileExtension ,:Revision ,:ChangeNumber ,:Status ,:DocumentSummary ,:Document1 ,:rowguid6 ,:ModifiedDate11
+
+);
+
+
+end loading;
+
+.LOGOFF;

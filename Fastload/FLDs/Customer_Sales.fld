@@ -1,0 +1,85 @@
+ 
+.sessions 2;
+ERRLIMIT 40;
+.LOGON 192.168.18.91/dbc,dbc;
+DATABASE DB_STG1;
+.set record vartext ",";
+
+
+DROP TABLE Customer_Sales;
+DROP TABLE Customer_Sales_ERROR1;
+DROP TABLE Customer_Sales_ERROR2; 
+
+CREATE SET TABLE Customer_Sales ,NO FALLBACK ,
+     NO BEFORE JOURNAL,
+     NO AFTER JOURNAL
+     (
+	 CustomerID	VARCHAR (50), 
+	PersonID	VARCHAR (50), 
+	StoreID	VARCHAR (50), 
+	TerritoryID	VARCHAR (50), 
+	AccountNumber	VARCHAR (50), 
+	rowguid	VARCHAR (50), 
+	ModifiedDate	VARCHAR (50)
+
+	);
+
+
+
+
+
+RECORD 2 THRU 19821;
+
+DEFINE
+
+CustomerID	(VARCHAR (50)) 
+PersonID	(VARCHAR (50)) 
+StoreID	(VARCHAR (50)) 
+TerritoryID	(VARCHAR (50)) 
+AccountNumber	(VARCHAR (50)) 
+rowguid	(VARCHAR (50)) 
+ModifiedDate	(VARCHAR (50)) 
+
+
+
+
+FILE="F:\ADW 2017\ADW 2017\Sales_Customer.csv";
+
+begin loading
+Customer_Sales
+errorfiles
+Customer_Sales_ERROR1
+,Customer_Sales_ERROR2
+
+
+CHECKPOINT 1000;
+
+insert into Customer_Sales (
+
+CustomerID,
+PersonID,
+StoreID,
+TerritoryID,
+AccountNumber,
+rowguid,
+ModifiedDate
+ 
+)
+values
+
+(
+:CustomerID ,
+:PersonID ,
+:StoreID ,
+:TerritoryID ,
+:AccountNumber ,
+:rowguid ,
+:ModifiedDate
+
+
+);
+
+
+end loading;
+
+.LOGOFF; 

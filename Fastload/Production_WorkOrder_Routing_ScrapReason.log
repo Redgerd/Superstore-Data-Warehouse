@@ -1,0 +1,305 @@
+     ===================================================================
+     =                                                                 =
+     =          FASTLOAD UTILITY     VERSION 16.20.00.05               =
+     =          PLATFORM WIN32                                         =
+     =          PID      15236                                         =
+     =                                                                 =
+     ===================================================================
+
+     ===================================================================
+     =                                                                 =
+     =          Copyright 1984-2020, Teradata Corporation.             =
+     =          ALL RIGHTS RESERVED.                                   =
+     =                                                                 =
+     ===================================================================
+
+**** 01:19:48 Processing starting at: Fri Jul 21 01:19:48 2023
+
+
+0001 .sessions 2;
+
+**** 01:19:48 FDL4866 SESSIONS command accepted
+
+0002 ERRLIMIT 40;
+
+**** 01:19:48 Error limit set to: 40
+
+     ===================================================================
+     =                                                                 =
+     =          Logon/Connection                                       =
+     =                                                                 =
+     ===================================================================
+
+0003 .LOGON 192.168.18.91/dbc,
+
+**** 01:19:48 Teradata Database Release: 16.20.32.23
+**** 01:19:48 Teradata Database Version: 16.20.32.23
+**** 01:19:48 Number of AMPs available: 2
+**** 01:19:48 Current CLI or RDBMS allows maximum row size: 64K
+**** 01:19:48 Character set for this job: ASCII
+
+0004 DATABASE DB_STG1;
+
+**** 01:19:48 Command completed successfully
+
+0005 .set record vartext "," QUOTE OPTIONAL '"';
+
+**** 01:19:48 Now set to read 'Variable-Length Text' records
+**** 01:19:48 Delimiter character(s) is set to ','
+**** 01:19:48 Field values are optionally quoted with '"'
+**** 01:19:48 Command completed successfully
+
+
+0006 DROP TABLE Production_WorkOrder_Routing_ScrapReason;
+
+**** 01:19:48 RDBMS error 3807: Object
+              'Production_WorkOrder_Routing_ScrapReason' does not exist.
+
+0007 DROP TABLE Production_WorkOrder_Routing_ScrapReason_ERROR1;
+
+**** 01:19:48 RDBMS error 3807: Object
+              'Production_WorkOrder_Routing_ScrapReason_ERROR1' does
+              not exist.
+
+0008 DROP TABLE Production_WorkOrder_Routing_ScrapReason_ERROR2;
+
+**** 01:19:48 RDBMS error 3807: Object
+              'Production_WorkOrder_Routing_ScrapReason_ERROR2' does
+              not exist.
+
+
+0009 CREATE SET TABLE Production_WorkOrder_Routing_ScrapReason
+          (
+     
+     	 WorkOrderID1 VARCHAR(500),ProductID1 VARCHAR(500),OrderQty VARCHAR(500),
+     StockedQty VARCHAR(500),ScrappedQty VARCHAR(500),StartDate VARCHAR(500),En
+     dDate VARCHAR(500),DueDate VARCHAR(500),ScrapReasonID1 VARCHAR(500),Modifi
+     edDate1 VARCHAR(500),WorkOrderID2 VARCHAR(500),ProductID2 VARCHAR(500),Ope
+     rationSequence VARCHAR(500),LocationID VARCHAR(500),ScheduledStartDate VAR
+     CHAR(500),ScheduledEndDate VARCHAR(500),ActualStartDate VARCHAR(500),Actua
+     lEndDate VARCHAR(500),ActualResourceHrs VARCHAR(500),PlannedCost VARCHAR(5
+     00),ActualCost VARCHAR(500),ModifiedDate2 VARCHAR(500),ScrapReasonID2 VARC
+     HAR(500),Name1 VARCHAR(500),ModifiedDate3 VARCHAR(500)
+     
+     	 );
+
+**** 01:19:48 Command completed successfully
+
+
+0010 RECORD 2;
+
+**** 01:19:48 Starting record number set to  : 2
+
+
+0011 DEFINE
+     
+     WorkOrderID1 (VARCHAR(500)) ProductID1 (VARCHAR(500)) OrderQty (VARCHAR(50
+     0)) StockedQty (VARCHAR(500)) ScrappedQty (VARCHAR(500)) StartDate (VARCHA
+     R(500)) EndDate (VARCHAR(500)) DueDate (VARCHAR(500)) ScrapReasonID1 (VARC
+     HAR(500)) ModifiedDate1 (VARCHAR(500)) WorkOrderID2 (VARCHAR(500)) Product
+     ID2 (VARCHAR(500)) OperationSequence (VARCHAR(500)) LocationID (VARCHAR(50
+     0)) ScheduledStartDate (VARCHAR(500)) ScheduledEndDate (VARCHAR(500)) Actu
+     alStartDate (VARCHAR(500)) ActualEndDate (VARCHAR(500)) ActualResourceHrs 
+     (VARCHAR(500)) PlannedCost (VARCHAR(500)) ActualCost (VARCHAR(500)) Modifi
+     edDate2 (VARCHAR(500)) ScrapReasonID2 (VARCHAR(500)) Name1 (VARCHAR(500)) 
+     ModifiedDate3 (VARCHAR(500))
+     
+     
+     
+     FILE="F:\ADW 2017\ADW 2017\Production_WorkOrder_Routing_ScrapReason.csv";
+
+**** 01:19:48 FDL4803 DEFINE statement processed
+
+
+0012 begin loading
+     Production_WorkOrder_Routing_ScrapReason
+     errorfiles
+     Production_WorkOrder_Routing_ScrapReason_ERROR1,
+     Production_WorkOrder_Routing_ScrapReason_ERROR2
+     
+     
+     CHECKPOINT 1000;
+
+**** 01:19:48 Number of FastLoad sessions requested = 2
+**** 01:19:48 Number of FastLoad sessions connected = 2
+**** 01:19:48 FDL4808 LOGON successful
+**** 01:19:48 Number of AMPs available: 2
+**** 01:19:48 BEGIN LOADING COMPLETE
+
+
+     ===================================================================
+     =                                                                 =
+     =          Insert Phase                                           =
+     =                                                                 =
+     ===================================================================
+
+0013 insert into Production_WorkOrder_Routing_ScrapReason
+     (
+     
+     WorkOrderID1,ProductID1,OrderQty,StockedQty,ScrappedQty,StartDate,EndDate,
+     DueDate,ScrapReasonID1,ModifiedDate1,WorkOrderID2,ProductID2,OperationSequ
+     ence,LocationID,ScheduledStartDate,ScheduledEndDate,ActualStartDate,Actual
+     EndDate,ActualResourceHrs,PlannedCost,ActualCost,ModifiedDate2,ScrapReason
+     ID2,Name1,ModifiedDate3
+     
+     )
+     values
+     
+     (
+     
+     :WorkOrderID1 ,:ProductID1 ,:OrderQty ,:StockedQty ,:ScrappedQty ,:StartDa
+     te ,:EndDate ,:DueDate ,:ScrapReasonID1 ,:ModifiedDate1 ,:WorkOrderID2 ,:P
+     roductID2 ,:OperationSequence ,:LocationID ,:ScheduledStartDate ,:Schedule
+     dEndDate ,:ActualStartDate ,:ActualEndDate ,:ActualResourceHrs ,:PlannedCo
+     st ,:ActualCost ,:ModifiedDate2 ,:ScrapReasonID2 ,:Name1 ,:ModifiedDate3
+     
+     );
+
+**** 01:19:48 Number of recs/msg: 5
+**** 01:19:48 Starting to send to RDBMS with record 2
+**** 01:19:48 Sending row 1001
+**** 01:19:48 Sending row 2001
+**** 01:19:48 Sending row 3001
+**** 01:19:48 Sending row 4001
+**** 01:19:48 Sending row 5001
+**** 01:19:48 Sending row 6001
+**** 01:19:49 Sending row 7001
+**** 01:19:49 Sending row 8001
+**** 01:19:49 Sending row 9001
+**** 01:19:49 Sending row 10001
+**** 01:19:49 Sending row 11001
+**** 01:19:49 Sending row 12001
+**** 01:19:49 Sending row 13001
+**** 01:19:49 Sending row 14001
+**** 01:19:49 Sending row 15001
+**** 01:19:49 Sending row 16001
+**** 01:19:49 Sending row 17001
+**** 01:19:49 Sending row 18001
+**** 01:19:49 Sending row 19001
+**** 01:19:49 Sending row 20001
+**** 01:19:49 Sending row 21001
+**** 01:19:49 Sending row 22001
+**** 01:19:49 Sending row 23001
+**** 01:19:49 Sending row 24001
+**** 01:19:50 Sending row 25001
+**** 01:19:50 Sending row 26001
+**** 01:19:50 Sending row 27001
+**** 01:19:50 Sending row 28001
+**** 01:19:50 Sending row 29001
+**** 01:19:50 Sending row 30001
+**** 01:19:50 Sending row 31001
+**** 01:19:50 Sending row 32001
+**** 01:19:50 Sending row 33001
+**** 01:19:50 Sending row 34001
+**** 01:19:50 Sending row 35001
+**** 01:19:50 Sending row 36001
+**** 01:19:50 Sending row 37001
+**** 01:19:50 Sending row 38001
+**** 01:19:50 Sending row 39001
+**** 01:19:50 Sending row 40001
+**** 01:19:50 Sending row 41001
+**** 01:19:51 Sending row 42001
+**** 01:19:51 Sending row 43001
+**** 01:19:51 Sending row 44001
+**** 01:19:51 Sending row 45001
+**** 01:19:51 Sending row 46001
+**** 01:19:51 Sending row 47001
+**** 01:19:51 Sending row 48001
+**** 01:19:51 Sending row 49001
+**** 01:19:51 Sending row 50001
+**** 01:19:51 Sending row 51001
+**** 01:19:51 Sending row 52001
+**** 01:19:51 Sending row 53001
+**** 01:19:51 Sending row 54001
+**** 01:19:51 Sending row 55001
+**** 01:19:52 Sending row 56001
+**** 01:19:52 Sending row 57001
+**** 01:19:52 Sending row 58001
+**** 01:19:52 Sending row 59001
+**** 01:19:52 Sending row 60001
+**** 01:19:52 Sending row 61001
+**** 01:19:52 Sending row 62001
+**** 01:19:52 Sending row 63001
+**** 01:19:52 Sending row 64001
+**** 01:19:52 Sending row 65001
+**** 01:19:52 Sending row 66001
+**** 01:19:52 Sending row 67001
+**** 01:19:52 Sending row 68001
+**** 01:19:52 Sending row 69001
+**** 01:19:52 Sending row 70001
+**** 01:19:53 Sending row 71001
+**** 01:19:53 Sending row 72001
+**** 01:19:53 Sending row 73001
+**** 01:19:53 Sending row 74001
+**** 01:19:53 Sending row 75001
+**** 01:19:53 Sending row 76001
+**** 01:19:53 Sending row 77001
+**** 01:19:53 Sending row 78001
+**** 01:19:53 Sending row 79001
+**** 01:19:53 Sending row 80001
+**** 01:19:53 Sending row 81001
+**** 01:19:53 Sending row 82001
+**** 01:19:53 Sending row 83001
+**** 01:19:53 Sending row 84001
+**** 01:19:54 Sending row 85001
+**** 01:19:54 Sending row 86001
+**** 01:19:54 Sending row 87001
+**** 01:19:54 Sending row 88001
+**** 01:19:54 Sending row 89001
+**** 01:19:54 Sending row 90001
+**** 01:19:54 Sending row 91001
+**** 01:19:54 Sending row 92001
+**** 01:19:54 Sending row 93001
+**** 01:19:54 Sending row 94001
+**** 01:19:54 Sending row 95001
+**** 01:19:54 Sending row 96001
+**** 01:19:54 Sending row 97001
+**** 01:19:54 Sending row 97098
+**** 01:19:54 Finished sending rows to the RDBMS
+
+**** 01:19:54 Acquisition Phase statistics:
+              Elapsed time: 00:00:06 (in hh:mm:ss)
+              CPU time:     0.765625 Seconds
+              MB/sec:       4.42
+              MB/cpusec:    34.67
+
+
+     ===================================================================
+     =                                                                 =
+     =          End Loading Phase                                      =
+     =                                                                 =
+     ===================================================================
+
+0014 end loading;
+
+**** 01:19:55 END LOADING COMPLETE
+
+     Total Records Read              =  97098
+      - skipped by RECORD command    =  1
+      - sent to the RDBMS            =  97097
+     Total Error Table 1             =  0  ---- Table has been dropped
+     Total Error Table 2             =  0  ---- Table has been dropped
+     Total Inserts Applied           =  97097
+     Total Duplicate Rows            =  0
+
+     Start:   Fri Jul 21 01:19:54 2023
+     End  :   Fri Jul 21 01:19:55 2023
+
+**** 01:19:55 Application Phase statistics:
+              Elapsed time: 00:00:01 (in hh:mm:ss)
+
+
+0015 .LOGOFF;
+
+     ===================================================================
+     =                                                                 =
+     =          Logoff/Disconnect                                      =
+     =                                                                 =
+     ===================================================================
+
+**** 01:19:56 Logging off all sessions
+**** 01:19:56 Total processor time used = '0.875 Seconds'
+     .        Start : Fri Jul 21 01:19:48 2023
+     .        End   : Fri Jul 21 01:19:56 2023
+     .        Highest return code encountered = '0'.
+**** 01:19:56 FDL4818 FastLoad Terminated

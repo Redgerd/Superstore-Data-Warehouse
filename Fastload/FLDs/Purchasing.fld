@@ -1,0 +1,61 @@
+ 
+.sessions 2;
+ERRLIMIT 40;
+.LOGON 192.168.18.91/dbc,dbc;
+DATABASE DB_STG1;
+.set record vartext ","  QUOTE OPTIONAL '"';
+
+
+
+DROP TABLE Purchasing;
+DROP TABLE Purchasing_ERROR1;
+DROP TABLE Purchasing_ERROR2; 
+
+CREATE SET TABLE Purchasing
+    (
+	
+	BusinessEntityID1 VARCHAR(500),AccountNumber VARCHAR(500),Name1 VARCHAR(500),CreditRating VARCHAR(500),PreferredVendorStatus VARCHAR(500),ActiveFlag VARCHAR(500),PurchasingWebServiceURL VARCHAR(500),ModifiedDate1 VARCHAR(500),BusinessEntityID2 VARCHAR(500),ProductID1 VARCHAR(500),AverageLeadTime VARCHAR(500),StandardPrice VARCHAR(500),LastReceiptCost VARCHAR(500),LastReceiptDate VARCHAR(500),MinOrderQty VARCHAR(500),MaxOrderQty VARCHAR(500),OnOrderQty VARCHAR(500),UnitMeasureCode VARCHAR(500),ModifiedDate2 VARCHAR(500),PurchaseOrderID1 VARCHAR(500),ShipMethodID1 VARCHAR(500),VendorID VARCHAR(500),RevisionNumber VARCHAR(500),Status VARCHAR(500),OrderDate VARCHAR(500),ShipDate VARCHAR(500),SubTotal VARCHAR(500),TaxAmt VARCHAR(500),Freight VARCHAR(500),TotalDue VARCHAR(500),ModifiedDate3 VARCHAR(500),PurchaseOrderID2 VARCHAR(500),PurchaseOrderDetailID VARCHAR(500),DueDate VARCHAR(500),OrderQty VARCHAR(500),ProductID2 VARCHAR(500),UnitPrice VARCHAR(500),LineTotal VARCHAR(500),ReceivedQty VARCHAR(500),RejectedQty VARCHAR(500),StockedQty VARCHAR(500),ModifiedDate4 VARCHAR(500),ShipMethodID2 VARCHAR(500),Name2 VARCHAR(500),ShipBase VARCHAR(500),ShipRate VARCHAR(500),rowguid VARCHAR(500),ModifiedDate5 VARCHAR(500)
+
+	);
+
+
+
+RECORD 2;
+
+DEFINE
+
+BusinessEntityID1 (VARCHAR(500)) AccountNumber (VARCHAR(500)) Name1 (VARCHAR(500)) CreditRating (VARCHAR(500)) PreferredVendorStatus (VARCHAR(500)) ActiveFlag (VARCHAR(500)) PurchasingWebServiceURL (VARCHAR(500)) ModifiedDate1 (VARCHAR(500)) BusinessEntityID2 (VARCHAR(500)) ProductID1 (VARCHAR(500)) AverageLeadTime (VARCHAR(500)) StandardPrice (VARCHAR(500)) LastReceiptCost (VARCHAR(500)) LastReceiptDate (VARCHAR(500)) MinOrderQty (VARCHAR(500)) MaxOrderQty (VARCHAR(500)) OnOrderQty (VARCHAR(500)) UnitMeasureCode (VARCHAR(500)) ModifiedDate2 (VARCHAR(500)) PurchaseOrderID1 (VARCHAR(500)) ShipMethodID1 (VARCHAR(500)) VendorID (VARCHAR(500)) RevisionNumber (VARCHAR(500)) Status (VARCHAR(500)) OrderDate (VARCHAR(500)) ShipDate (VARCHAR(500)) SubTotal (VARCHAR(500)) TaxAmt (VARCHAR(500)) Freight (VARCHAR(500)) TotalDue (VARCHAR(500)) ModifiedDate3 (VARCHAR(500)) PurchaseOrderID2 (VARCHAR(500)) PurchaseOrderDetailID (VARCHAR(500)) DueDate (VARCHAR(500)) OrderQty (VARCHAR(500)) ProductID2 (VARCHAR(500)) UnitPrice (VARCHAR(500)) LineTotal (VARCHAR(500)) ReceivedQty (VARCHAR(500)) RejectedQty (VARCHAR(500)) StockedQty (VARCHAR(500)) ModifiedDate4 (VARCHAR(500)) ShipMethodID2 (VARCHAR(500)) Name2 (VARCHAR(500)) ShipBase (VARCHAR(500)) ShipRate (VARCHAR(500)) rowguid (VARCHAR(500)) ModifiedDate5 (VARCHAR(500))
+
+
+
+FILE="F:\ADW 2017\ADW 2017\Purchasing.csv";
+
+
+
+begin loading
+Purchasing
+errorfiles
+Purchasing_ERROR1,
+Purchasing_ERROR2
+
+
+CHECKPOINT 1000;
+
+insert into Purchasing
+(
+
+BusinessEntityID1,AccountNumber,Name1,CreditRating,PreferredVendorStatus,ActiveFlag,PurchasingWebServiceURL,ModifiedDate1,BusinessEntityID2,ProductID1,AverageLeadTime,StandardPrice,LastReceiptCost,LastReceiptDate,MinOrderQty,MaxOrderQty,OnOrderQty,UnitMeasureCode,ModifiedDate2,PurchaseOrderID1,ShipMethodID1,VendorID,RevisionNumber,Status,OrderDate,ShipDate,SubTotal,TaxAmt,Freight,TotalDue,ModifiedDate3,PurchaseOrderID2,PurchaseOrderDetailID,DueDate,OrderQty,ProductID2,UnitPrice,LineTotal,ReceivedQty,RejectedQty,StockedQty,ModifiedDate4,ShipMethodID2,Name2,ShipBase,ShipRate,rowguid,ModifiedDate5
+
+)
+values
+
+(
+
+:BusinessEntityID1 ,:AccountNumber ,:Name1 ,:CreditRating ,:PreferredVendorStatus ,:ActiveFlag ,:PurchasingWebServiceURL ,:ModifiedDate1 ,:BusinessEntityID2 ,:ProductID1 ,:AverageLeadTime ,:StandardPrice ,:LastReceiptCost ,:LastReceiptDate ,:MinOrderQty ,:MaxOrderQty ,:OnOrderQty ,:UnitMeasureCode ,:ModifiedDate2 ,:PurchaseOrderID1 ,:ShipMethodID1 ,:VendorID ,:RevisionNumber ,:Status ,:OrderDate ,:ShipDate ,:SubTotal ,:TaxAmt ,:Freight ,:TotalDue ,:ModifiedDate3 ,:PurchaseOrderID2 ,:PurchaseOrderDetailID ,:DueDate ,:OrderQty ,:ProductID2 ,:UnitPrice ,:LineTotal ,:ReceivedQty ,:RejectedQty ,:StockedQty ,:ModifiedDate4 ,:ShipMethodID2 ,:Name2 ,:ShipBase ,:ShipRate ,:rowguid ,:ModifiedDate5
+
+);
+
+
+end loading;
+
+.LOGOFF;

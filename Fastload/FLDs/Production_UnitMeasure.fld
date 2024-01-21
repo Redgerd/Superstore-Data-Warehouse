@@ -1,0 +1,62 @@
+ 
+.sessions 2;
+ERRLIMIT 40;
+.LOGON 192.168.18.91/dbc,dbc;
+DATABASE DB_STG1;
+.set record vartext "," QUOTE OPTIONAL '"';
+
+
+DROP TABLE Production_UnitMeasure;
+DROP TABLE Production_UnitMeasure_ERROR1;
+DROP TABLE Production_UnitMeasure_ERROR2; 
+
+CREATE SET TABLE Production_UnitMeasure
+     (
+	 
+	 UnitMeasureCode VARCHAR(500),Name1 VARCHAR(500),ModifiedDate VARCHAR(500)
+
+	 );
+
+
+
+
+RECORD 2;
+
+DEFINE
+
+UnitMeasureCode (VARCHAR(500)) Name1 (VARCHAR(500)) ModifiedDate (VARCHAR(500))
+
+
+
+
+FILE="F:\ADW 2017\ADW 2017\Production_UnitMeasure.csv";
+
+
+
+begin loading
+Production_UnitMeasure
+errorfiles
+Production_UnitMeasure_ERROR1,
+Production_UnitMeasure_ERROR2
+
+
+CHECKPOINT 1000;
+
+insert into Production_UnitMeasure
+(
+
+UnitMeasureCode,Name1,ModifiedDate
+
+)
+values
+
+(
+
+:UnitMeasureCode ,:Name1 ,:ModifiedDate
+
+);
+
+
+end loading;
+
+.LOGOFF;

@@ -1,0 +1,58 @@
+ 
+.sessions 2;
+ERRLIMIT 40;
+.LOGON 192.168.18.91/dbc,dbc;
+DATABASE DB_STG1;
+.set record vartext "," QUOTE OPTIONAL '"';
+
+
+DROP TABLE HR;
+DROP TABLE HR_ERROR1;
+DROP TABLE HR_ERROR2; 
+
+CREATE SET TABLE HR
+     (
+	 
+	 BusinessEntityID1 VARCHAR(500),NationalIDNumber VARCHAR(500),LoginID VARCHAR(500),OrganizationLevel VARCHAR(500),JobTitle VARCHAR(500),BirthDate VARCHAR(500),MaritalStatus VARCHAR(500),Gender VARCHAR(500),HireDate VARCHAR(500),SalariedFlag VARCHAR(500),VacationHours VARCHAR(500),SickLeaveHours VARCHAR(500),rowguid VARCHAR(500),ModifiedDate1 VARCHAR(500),Name1 VARCHAR(500),GroupName VARCHAR(500),ModifiedDate2 VARCHAR(500),BusinessEntityID2 VARCHAR(500),DepartmentID VARCHAR(500),ShiftID VARCHAR(500),StartDate VARCHAR(500),EndDate VARCHAR(500),ModifiedDate3 VARCHAR(500),Name2 VARCHAR(500),StartTime VARCHAR(500),EndTime VARCHAR(500),ModifiedDate4 VARCHAR(500),BusinessEntityID3 VARCHAR(500),JobCandidateID VARCHAR(500),ModifiedDate5 VARCHAR(500),BusinessEntityID4 VARCHAR(500),RateChangeDate VARCHAR(500),Rate VARCHAR(500),PayFrequency VARCHAR(500),ModifiedDate6 VARCHAR(500)
+	 
+	 );
+
+
+RECORD 2;
+
+DEFINE
+
+BusinessEntityID1 (VARCHAR(500)) NationalIDNumber (VARCHAR(500)) LoginID (VARCHAR(500)) OrganizationLevel (VARCHAR(500)) JobTitle (VARCHAR(500)) BirthDate (VARCHAR(500)) MaritalStatus (VARCHAR(500)) Gender (VARCHAR(500)) HireDate (VARCHAR(500)) SalariedFlag (VARCHAR(500)) VacationHours (VARCHAR(500)) SickLeaveHours (VARCHAR(500)) rowguid (VARCHAR(500)) ModifiedDate1 (VARCHAR(500)) Name1 (VARCHAR(500)) GroupName (VARCHAR(500)) ModifiedDate2 (VARCHAR(500)) BusinessEntityID2 (VARCHAR(500)) DepartmentID (VARCHAR(500)) ShiftID (VARCHAR(500)) StartDate (VARCHAR(500)) EndDate (VARCHAR(500)) ModifiedDate3 (VARCHAR(500)) Name2 (VARCHAR(500)) StartTime (VARCHAR(500)) EndTime (VARCHAR(500)) ModifiedDate4 (VARCHAR(500)) BusinessEntityID3 (VARCHAR(500)) JobCandidateID (VARCHAR(500)) ModifiedDate5 (VARCHAR(500)) BusinessEntityID4 (VARCHAR(500)) RateChangeDate (VARCHAR(500)) Rate (VARCHAR(500)) PayFrequency (VARCHAR(500)) ModifiedDate6 (VARCHAR(500))
+
+
+FILE="F:\ADW 2017\ADW 2017\HR.csv";
+
+
+
+begin loading
+HR
+errorfiles
+HR_ERROR1
+,HR_ERROR2
+
+
+CHECKPOINT 1000;
+
+insert into HR
+(
+
+BusinessEntityID1,NationalIDNumber,LoginID,OrganizationLevel,JobTitle,BirthDate,MaritalStatus,Gender,HireDate,SalariedFlag,VacationHours,SickLeaveHours,rowguid,ModifiedDate1,Name1,GroupName,ModifiedDate2,BusinessEntityID2,DepartmentID,ShiftID,StartDate,EndDate,ModifiedDate3,Name2,StartTime,EndTime,ModifiedDate4,BusinessEntityID3,JobCandidateID,ModifiedDate5,BusinessEntityID4,RateChangeDate,Rate,PayFrequency,ModifiedDate6
+
+)
+values
+
+(
+
+:BusinessEntityID1 ,:NationalIDNumber ,:LoginID ,:OrganizationLevel ,:JobTitle ,:BirthDate ,:MaritalStatus ,:Gender ,:HireDate ,:SalariedFlag ,:VacationHours ,:SickLeaveHours ,:rowguid ,:ModifiedDate1 ,:Name1 ,:GroupName ,:ModifiedDate2 ,:BusinessEntityID2 ,:DepartmentID ,:ShiftID ,:StartDate ,:EndDate ,:ModifiedDate3 ,:Name2 ,:StartTime ,:EndTime ,:ModifiedDate4 ,:BusinessEntityID3 ,:JobCandidateID ,:ModifiedDate5 ,:BusinessEntityID4 ,:RateChangeDate ,:Rate ,:PayFrequency ,:ModifiedDate6
+
+);
+
+
+end loading;
+
+.LOGOFF;

@@ -1,0 +1,57 @@
+ 
+.sessions 2;
+ERRLIMIT 40;
+.LOGON 192.168.18.91/dbc,dbc;
+DATABASE DB_STG1;
+.set record vartext "," QUOTE OPTIONAL '"';
+
+
+DROP TABLE Sales_Store;
+DROP TABLE Sales_Store_ERROR1;
+DROP TABLE Sales_Store_ERROR2; 
+
+CREATE SET TABLE Sales_Store
+    (
+	
+	BusinessEntityID VARCHAR(500),Name VARCHAR(500),SalesPersonID VARCHAR(500),Demographics VARCHAR(500),rowguid VARCHAR(500),ModifiedDate VARCHAR(500)
+	
+	);
+
+
+
+RECORD 2;
+
+DEFINE
+
+BusinessEntityID (VARCHAR(500)) Name (VARCHAR(500)) SalesPersonID (VARCHAR(500)) Demographics (VARCHAR(500)) rowguid (VARCHAR(500)) ModifiedDate (VARCHAR(500))
+
+
+FILE="F:\ADW 2017\ADW 2017\Sales_Store.csv";
+
+begin loading
+Sales_Store
+errorfiles
+Sales_Store_ERROR1
+,Sales_Store_ERROR2
+
+
+CHECKPOINT 1000;
+
+insert into Sales_Store
+(
+
+BusinessEntityID,Name,SalesPersonID,Demographics,rowguid,ModifiedDate
+ 
+)
+values
+
+(
+
+:BusinessEntityID ,:Name ,:SalesPersonID ,:Demographics ,:rowguid ,:ModifiedDate
+
+);
+
+
+end loading;
+
+.LOGOFF; 

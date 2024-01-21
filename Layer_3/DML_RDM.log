@@ -1,0 +1,259 @@
+BTEQ 16.20.00.07 (32-bit) Fri Aug 04 21:38:55 2023 PID: 11840
+ 
++---------+---------+---------+---------+---------+---------+---------+----
+
+.LOGON 192.168.18.94 /DBC,
+
+ *** Logon successfully completed.
+ *** Teradata Database Release is 16.20.32.23                   
+ *** Teradata Database Version is 16.20.32.23                     
+ *** Transaction Semantics are BTET.
+ *** Session Character Set Name is 'ASCII'.
+ 
+ *** Total elapsed time was 1 second.
+ 
++---------+---------+---------+---------+---------+---------+---------+----
+DATABASE DB_RDM ;
+
+ *** New default database accepted. 
+ *** Total elapsed time was 1 second.
+
+
++---------+---------+---------+---------+---------+---------+---------+----
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+                          --SALES				
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+INSERT INTO  DB_RDM.STORE
+SEL 
+BUSINESSENTITYID
+,NAME
+,DEMOGRAPHICS
+,ROWGUID
+,CAST(MODIFIEDDATE AS DATE) AS MODIFIEDDATE,
+CAST(MODIFIEDDATE AS TIME FORMAT 'HH:MI:SS') TIME1
+FROM DB_STG2.STORE;
+
+ *** Insert completed. 2804 rows added. 
+ *** Total elapsed time was 1 second.
+
+
++---------+---------+---------+---------+---------+---------+---------+----
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+INSERT INTO DB_RDM.CUSTOMER
+SELECT CUSTOMERID, PERSONID, STOREID, TERRITORYID, ACCOUNTNUMBER,
+  ROWGUID
+  ,CAST(MODIFIEDDATE AS DATE) AS MODIFIEDDATE
+,CAST(MODIFIEDDATE AS TIME FORMAT  'HH:MI:SS') AS TIME1
+FROM DB_STG2.CUSTOMER;
+
+ *** Insert completed. 19820 rows added. 
+ *** Total elapsed time was 1 second.
+
+
++---------+---------+---------+---------+---------+---------+---------+----
+ 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+INSERT INTO DB_RDM.SHOPPINGCARTITEM
+SELECT SHOPPINGCARTITEMID, SHOPPINGCARTID, QUANTITY, PRODUCTID,
+  CAST(DATECREATED AS DATE) AS DATECREATED,
+  CAST(DATECREATED AS TIME FORMAT 'HH:MI:SS') AS TIME2
+  ,CAST(MODIFIEDDATE AS DATE) AS MODIFIEDDATE
+,CAST(MODIFIEDDATE AS TIME FORMAT  'HH:MI:SS') AS TIME1
+  
+FROM DB_STG2.SHOPPINGCARTITEM;
+
+ *** Insert completed. 3 rows added. 
+ *** Total elapsed time was 1 second.
+
+
++---------+---------+---------+---------+---------+---------+---------+----
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+INSERT INTO DB_RDM.SALESTAXRATE
+SELECT *
+FROM DB_STG2.SALESTAXRATE;
+
+ *** Insert completed. 29 rows added. 
+ *** Total elapsed time was 1 second.
+
+
++---------+---------+---------+---------+---------+---------+---------+----
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+INSERT INTO DB_RDM.CURRENCY 
+SELECT *
+FROM DB_STG2.CURRENCY;
+
+ *** Insert completed. 4 rows added. 
+ *** Total elapsed time was 1 second.
+
+
++---------+---------+---------+---------+---------+---------+---------+----
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+INSERT INTO DB_RDM.CURRENCYRATE 
+SELECT *
+  FROM DB_STG2.CURRENCYRATE;
+
+ *** Insert completed. 2514 rows added. 
+ *** Total elapsed time was 1 second.
+
+
++---------+---------+---------+---------+---------+---------+---------+----
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+INSERT INTO DB_RDM.SPECIALOFFER 
+SELECT *
+  FROM DB_STG2.SPECIALOFFER;
+
+ *** Insert completed. 25 rows added. 
+ *** Total elapsed time was 1 second.
+
+
++---------+---------+---------+---------+---------+---------+---------+----
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+INSERT INTO DB_RDM.SALESTERRITORYHISTORY 
+SELECT *
+FROM DB_STG2.SALESTERRITORYHISTORY;
+
+ *** Insert completed. 68 rows added. 
+ *** Total elapsed time was 1 second.
+
+
++---------+---------+---------+---------+---------+---------+---------+----
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+INSERT INTO DB_RDM.SALESTERRITORY 
+SELECT *
+  FROM DB_STG2.SALESTERRITORY;
+
+ *** Insert completed. 40 rows added. 
+ *** Total elapsed time was 1 second.
+
+
++---------+---------+---------+---------+---------+---------+---------+----
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+INSERT INTO     DB_RDM.SPECIALOFFERPRODUCT    
+SELECT *
+FROM DB_STG2.SPECIALOFFERPRODUCT;
+
+ *** Insert completed. 8554 rows added. 
+ *** Total elapsed time was 1 second.
+
+
++---------+---------+---------+---------+---------+---------+---------+----
+ 
+ ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+INSERT INTO     DB_RDM.CREDITCARD
+SELECT *
+FROM DB_STG2.CREDITCARD;
+
+ *** Insert completed. 25021 rows added. 
+ *** Total elapsed time was 1 second.
+
+
++---------+---------+---------+---------+---------+---------+---------+----
+     
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+INSERT INTO  DB_RDM.SALESREASON 
+SELECT *
+ FROM DB_STG2.SALESREASON;
+
+ *** Insert completed. 18 rows added. 
+ *** Total elapsed time was 1 second.
+
+
++---------+---------+---------+---------+---------+---------+---------+----
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+INSERT INTO  DB_RDM.SALESORDERHEADER 
+SELECT BUSINESSENTITYID, SALESORDERID, REVISIONNUMBER, ORDERDATE,
+  DUEDATE, SHIPDATE, STATUS, ONLINEORDERFLAG, SALESORDERNUMBER,
+  PURCHASEORDERNUMBER, ACCOUNTNUMBER,CustomerID,
+  SalesPersonID,TERRITORYID, BILLTOADDRESSID, SHIPTOADDRESSID, SHIPMETHODI
+D,
+  CREDITCARDID, CREDITCARDAPPROVALCODE, CURRENCYRATEID, SUBTOTAL,
+  TAXAMT, FREIGHT, TOTALDUE, COMMENT_, ROWGUID
+  ,CAST(MODIFIEDDATE AS DATE) AS MODIFIEDDATE
+FROM DB_STG2.SALESORDERHEADER;
+
+ *** Insert completed. 55748 rows added. 
+ *** Total elapsed time was 5 seconds.
+
+
++---------+---------+---------+---------+---------+---------+---------+----
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+INSERT INTO  DB_RDM.SALESPERSONQUOTAHISTORY 
+SELECT *
+FROM DB_STG2.SALESPERSONQUOTAHISTORY;
+
+ *** Insert completed. 556 rows added. 
+ *** Total elapsed time was 1 second.
+
+
++---------+---------+---------+---------+---------+---------+---------+----
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+INSERT INTO  DB_RDM.SALESPERSON 
+SEL *
+FROM DB_STG2.SALESPERSON;
+
+ *** Insert completed. 56 rows added. 
+ *** Total elapsed time was 1 second.
+
+
++---------+---------+---------+---------+---------+---------+---------+----
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+INSERT INTO  DB_RDM.PERSONCREDITCARD 
+SELECT *
+FROM DB_STG2.PERSONCREDITCARD;
+
+ *** Insert completed. 25021 rows added. 
+ *** Total elapsed time was 1 second.
+
+
++---------+---------+---------+---------+---------+---------+---------+----
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+INSERT INTO  DB_RDM.SALESORDERHEADERSALESREASON 
+SELECT *
+FROM DB_STG2.SALESORDERHEADERSALESREASON;
+
+ *** Insert completed. 48955 rows added. 
+ *** Total elapsed time was 1 second.
+
+
++---------+---------+---------+---------+---------+---------+---------+----
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+INSERT INTO  DB_RDM.SALESORDERDETAIL 
+SELECT *
+
+FROM DB_STG2.SALESORDERDETAIL;
+
+ *** Insert completed. 230487 rows added. 
+ *** Total elapsed time was 7 seconds.
+
+
++---------+---------+---------+---------+---------+---------+---------+----
+ ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.LOGOFF ;
+ *** You are now logged off from the DBC.
++---------+---------+---------+---------+---------+---------+---------+----
+ 
+ 
+ 
+ 
+ 
+ *** BTEQ exiting due to EOF on stdin.
+ *** Exiting BTEQ...
+ *** RC (return code) = 0 

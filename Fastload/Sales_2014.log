@@ -1,0 +1,633 @@
+     ===================================================================
+     =                                                                 =
+     =          FASTLOAD UTILITY     VERSION 16.20.00.05               =
+     =          PLATFORM WIN32                                         =
+     =          PID      11376                                         =
+     =                                                                 =
+     ===================================================================
+
+     ===================================================================
+     =                                                                 =
+     =          Copyright 1984-2020, Teradata Corporation.             =
+     =          ALL RIGHTS RESERVED.                                   =
+     =                                                                 =
+     ===================================================================
+
+**** 03:36:28 Processing starting at: Fri Jul 21 03:36:28 2023
+
+
+0001 .sessions 2;
+
+**** 03:36:28 FDL4866 SESSIONS command accepted
+
+0002 ERRLIMIT 40;
+
+**** 03:36:28 Error limit set to: 40
+
+     ===================================================================
+     =                                                                 =
+     =          Logon/Connection                                       =
+     =                                                                 =
+     ===================================================================
+
+0003 .LOGON 192.168.18.91/dbc,
+
+**** 03:36:28 Teradata Database Release: 16.20.32.23
+**** 03:36:28 Teradata Database Version: 16.20.32.23
+**** 03:36:28 Number of AMPs available: 2
+**** 03:36:28 Current CLI or RDBMS allows maximum row size: 64K
+**** 03:36:28 Character set for this job: ASCII
+
+0004 DATABASE DB_STG1;
+
+**** 03:36:28 Command completed successfully
+
+0005 .set record vartext ",";
+
+**** 03:36:28 Now set to read 'Variable-Length Text' records
+**** 03:36:28 Delimiter character(s) is set to ','
+**** 03:36:28 Command completed successfully
+
+
+0006 DROP TABLE Sales_2014;
+
+**** 03:36:28 RDBMS error 3807: Object 'Sales_2014' does not exist.
+
+0007 DROP TABLE Sales_2014_ERROR1;
+
+**** 03:36:28 RDBMS error 3807: Object 'Sales_2014_ERROR1' does not
+              exist.
+
+0008 DROP TABLE Sales_2014_ERROR2;
+
+**** 03:36:28 RDBMS error 3807: Object 'Sales_2014_ERROR2' does not
+              exist.
+
+
+0009 CREATE SET TABLE Sales_2014,NO FALLBACK ,
+          NO BEFORE JOURNAL,
+          NO AFTER JOURNAL
+          (
+     
+     SalesOrderID	varchar(100),
+     RevisionNumber	varchar(100),
+     OrderDate	varchar(100),
+     DueDate	varchar(100),
+     ShipDate	varchar(100),
+     Status	varchar(100),
+     OnlineOrderFlag	varchar(100),
+     SalesOrderNumber	varchar(100),
+     PurchaseOrderNumber	varchar(100),
+     AccountNumber	varchar(100),
+     CustomerID	varchar(100),
+     SalesPersonID	varchar(100),
+     TerritoryID	varchar(100),
+     BillToAddressID	varchar(100),
+     ShipToAddressID	varchar(100),
+     ShipMethodID	varchar(100),
+     CreditCardID	varchar(100),
+     CreditCardApprovalCode	varchar(100),
+     CurrencyRateID	varchar(100),
+     SubTotal	varchar(100),
+     TaxAmt	varchar(100),
+     Freight	varchar(100),
+     TotalDue	varchar(100),
+     Comment_	varchar(100),
+     rowguid	varchar(100),
+     ModifiedDate	varchar(100),
+     SalesOrderID2	varchar(100),
+     SalesReasonID	varchar(100),
+     ModifiedDate2	varchar(100),
+     SalesReasonID2	varchar(100),
+     Name	varchar(100),
+     ReasonType_	varchar(100),
+     ModifiedDate3	varchar(100),
+     SalesOrderID3	varchar(100),
+     SalesOrderDetailID	varchar(100),
+     CarrierTrackingNumber	varchar(100),
+     OrderQty	varchar(100),
+     ProductID	varchar(100),
+     SpecialOfferID	varchar(100),
+     UnitPrice	varchar(100),
+     UnitPriceDiscount	varchar(100),
+     LineTotal	varchar(100),
+     rowguid2	varchar(100),
+     ModifiedDate4	varchar(100),
+     SpecialOfferID2	varchar(100),
+     Description	varchar(100),
+     DiscountPct	varchar(100),
+     Type_	varchar(100),
+     Category	varchar(100),
+     StartDate	varchar(100),
+     EndDate	varchar(100),
+     MinQty	varchar(100),
+     MaxQty	varchar(100),
+     rowguid3	varchar(100),
+     ModifiedDate5	varchar(100),
+     SpecialOfferID3	varchar(100),
+     ProductID2	varchar(100),
+     rowguid4	varchar(100),
+     ModifiedDate6	varchar(100),
+     CurrencyRateID2	varchar(100),
+     CurrencyRateDate	varchar(100),
+     FromCurrencyCode	varchar(100),
+     ToCurrencyCode	varchar(100),
+     AverageRate	varchar(100),
+     EndOfDayRate	varchar(100),
+     ModifiedDate7	varchar(100),
+     CurrencyCode	varchar(100),
+     Name2	varchar(100),
+     ModifiedDate8	varchar(100),
+     CreditCardID2	varchar(100),
+     CardType_	varchar(100),
+     CardNumber	varchar(100),
+     ExpMonth	varchar(100),
+     ExpYear	varchar(100),
+     ModifiedDate9	varchar(100),
+     BusinessEntityID	varchar(100),
+     CreditCardID3	varchar(100),
+     ModifiedDate10	varchar(100),
+     TerritoryID2	varchar(100),
+     Name3	varchar(100),
+     CountryRegionCode	varchar(100),
+     Group_	varchar(100),
+     SalesYTD	varchar(100),
+     SalesLastYear	varchar(100),
+     CostYTD	varchar(100),
+     CostLastYear	varchar(100),
+     rowguid5	varchar(100),
+     ModifiedDate11	varchar(100),
+     BusinessEntityID2	varchar(100),
+     TerritoryID3	varchar(100),
+     StartDate2	varchar(100),
+     EndDate2	varchar(100),
+     rowguid6	varchar(100),
+     ModifiedDate12	varchar(100),
+     BusinessEntityID3	varchar(100),
+     QuotaDate	varchar(100),
+     SalesQuota	varchar(100),
+     rowguid7	varchar(100),
+     ModifiedDate13	varchar(100),
+     BusinessEntityID4	varchar(100),
+     TerritoryID4	varchar(100),
+     SalesQuota2	varchar(100),
+     Bonus	varchar(100),
+     CommissionPct	varchar(100),
+     SalesYTD2	varchar(100),
+     SalesLastYear2	varchar(100),
+     rowguid8	varchar(100),
+     ModifiedDate14	varchar(100)
+     
+      );
+
+**** 03:36:28 RDBMS warning 6900: FallBackSetting is ALWAYS FALLBACK -
+              Sales_2014 is set to FALLBACK.
+**** 03:36:28 Command completed successfully
+
+
+0010 RECORD 2 THRU 1860006 ;
+
+**** 03:36:28 Starting record number set to  : 2
+**** 03:36:28 Ending record number set to    : 1860006
+
+
+0011 DEFINE
+     
+     
+     SalesOrderID	(varchar(100))
+     RevisionNumber	(varchar(100))
+     OrderDate	(varchar(100))
+     DueDate	(varchar(100))
+     ShipDate	(varchar(100))
+     Status	(varchar(100))
+     OnlineOrderFlag	(varchar(100))
+     SalesOrderNumber	(varchar(100))
+     PurchaseOrderNumber	(varchar(100))
+     AccountNumber	(varchar(100))
+     CustomerID	(varchar(100))
+     SalesPersonID	(varchar(100))
+     TerritoryID	(varchar(100))
+     BillToAddressID	(varchar(100))
+     ShipToAddressID	(varchar(100))
+     ShipMethodID	(varchar(100))
+     CreditCardID	(varchar(100))
+     CreditCardApprovalCode	(varchar(100))
+     CurrencyRateID	(varchar(100))
+     SubTotal	(varchar(100))
+     TaxAmt	(varchar(100))
+     Freight	(varchar(100))
+     TotalDue	(varchar(100))
+     Comment_	(varchar(100))
+     rowguid	(varchar(100))
+     ModifiedDate	(varchar(100))
+     SalesOrderID2	(varchar(100))
+     SalesReasonID	(varchar(100))
+     ModifiedDate2	(varchar(100))
+     SalesReasonID2	(varchar(100))
+     Name	(varchar(100))
+     ReasonType_	(varchar(100))
+     ModifiedDate3	(varchar(100))
+     SalesOrderID3	(varchar(100))
+     SalesOrderDetailID	(varchar(100))
+     CarrierTrackingNumber	(varchar(100))
+     OrderQty	(varchar(100))
+     ProductID	(varchar(100))
+     SpecialOfferID	(varchar(100))
+     UnitPrice	(varchar(100))
+     UnitPriceDiscount	(varchar(100))
+     LineTotal	(varchar(100))
+     rowguid2	(varchar(100))
+     ModifiedDate4	(varchar(100))
+     SpecialOfferID2	(varchar(100))
+     Description	(varchar(100))
+     DiscountPct	(varchar(100))
+     Type_	(varchar(100))
+     Category	(varchar(100))
+     StartDate	(varchar(100))
+     EndDate	(varchar(100))
+     MinQty	(varchar(100))
+     MaxQty	(varchar(100))
+     rowguid3	(varchar(100))
+     ModifiedDate5	(varchar(100))
+     SpecialOfferID3	(varchar(100))
+     ProductID2	(varchar(100))
+     rowguid4	(varchar(100))
+     ModifiedDate6	(varchar(100))
+     CurrencyRateID2	(varchar(100))
+     CurrencyRateDate	(varchar(100))
+     FromCurrencyCode	(varchar(100))
+     ToCurrencyCode	(varchar(100))
+     AverageRate	(varchar(100))
+     EndOfDayRate	(varchar(100))
+     ModifiedDate7	(varchar(100))
+     CurrencyCode	(varchar(100))
+     Name2	(varchar(100))
+     ModifiedDate8	(varchar(100))
+     CreditCardID2	(varchar(100))
+     CardType_	(varchar(100))
+     CardNumber	(varchar(100))
+     ExpMonth	(varchar(100))
+     ExpYear	(varchar(100))
+     ModifiedDate9	(varchar(100))
+     BusinessEntityID	(varchar(100))
+     CreditCardID3	(varchar(100))
+     ModifiedDate10	(varchar(100))
+     TerritoryID2	(varchar(100))
+     Name3	(varchar(100))
+     CountryRegionCode	(varchar(100))
+     Group_	(varchar(100))
+     SalesYTD	(varchar(100))
+     SalesLastYear	(varchar(100))
+     CostYTD	(varchar(100))
+     CostLastYear	(varchar(100))
+     rowguid5	(varchar(100))
+     ModifiedDate11	(varchar(100))
+     BusinessEntityID2	(varchar(100))
+     TerritoryID3	(varchar(100))
+     StartDate2	(varchar(100))
+     EndDate2	(varchar(100))
+     rowguid6	(varchar(100))
+     ModifiedDate12	(varchar(100))
+     BusinessEntityID3	(varchar(100))
+     QuotaDate	(varchar(100))
+     SalesQuota	(varchar(100))
+     rowguid7	(varchar(100))
+     ModifiedDate13	(varchar(100))
+     BusinessEntityID4	(varchar(100))
+     TerritoryID4	(varchar(100))
+     SalesQuota2	(varchar(100))
+     Bonus	(varchar(100))
+     CommissionPct	(varchar(100))
+     SalesYTD2	(varchar(100))
+     SalesLastYear2	(varchar(100))
+     rowguid8	(varchar(100))
+     ModifiedDate14	(varchar(100))
+     
+     
+     
+     FILE="F:\ADW 2017\ADW 2017\Sales_2014.csv";
+
+**** 03:36:28 FDL4803 DEFINE statement processed
+
+
+0012 begin loading
+     Sales_2014
+     errorfiles
+     Sales_2014_ERROR1
+     ,Sales_2014_ERROR2
+     
+     
+     CHECKPOINT 100000;
+
+**** 03:36:28 Session count 1 returned by the DBS overrides
+              user-requested session count
+**** 03:36:28 Number of FastLoad sessions requested = 1
+**** 03:36:28 Number of FastLoad sessions connected = 1
+**** 03:36:28 FDL4808 LOGON successful
+**** 03:36:29 Number of AMPs available: 2
+**** 03:36:29 BEGIN LOADING COMPLETE
+
+
+     ===================================================================
+     =                                                                 =
+     =          Insert Phase                                           =
+     =                                                                 =
+     ===================================================================
+
+0013 insert into Sales_2014(
+     
+     SalesOrderID,
+     RevisionNumber,
+     OrderDate,
+     DueDate,
+     ShipDate,
+     Status,
+     OnlineOrderFlag,
+     SalesOrderNumber,
+     PurchaseOrderNumber,
+     AccountNumber,
+     CustomerID,
+     SalesPersonID,
+     TerritoryID,
+     BillToAddressID,
+     ShipToAddressID,
+     ShipMethodID,
+     CreditCardID,
+     CreditCardApprovalCode,
+     CurrencyRateID,
+     SubTotal,
+     TaxAmt,
+     Freight,
+     TotalDue,
+     Comment_,
+     rowguid,
+     ModifiedDate,
+     SalesOrderID2,
+     SalesReasonID,
+     ModifiedDate2,
+     SalesReasonID2,
+     Name,
+     ReasonType_,
+     ModifiedDate3,
+     SalesOrderID3,
+     SalesOrderDetailID,
+     CarrierTrackingNumber,
+     OrderQty,
+     ProductID,
+     SpecialOfferID,
+     UnitPrice,
+     UnitPriceDiscount,
+     LineTotal,
+     rowguid2,
+     ModifiedDate4,
+     SpecialOfferID2,
+     Description,
+     DiscountPct,
+     Type_,
+     Category,
+     StartDate,
+     EndDate,
+     MinQty,
+     MaxQty,
+     rowguid3,
+     ModifiedDate5,
+     SpecialOfferID3,
+     ProductID2,
+     rowguid4,
+     ModifiedDate6,
+     CurrencyRateID2,
+     CurrencyRateDate,
+     FromCurrencyCode,
+     ToCurrencyCode,
+     AverageRate,
+     EndOfDayRate,
+     ModifiedDate7,
+     CurrencyCode,
+     Name2,
+     ModifiedDate8,
+     CreditCardID2,
+     CardType_,
+     CardNumber,
+     ExpMonth,
+     ExpYear,
+     ModifiedDate9,
+     BusinessEntityID,
+     CreditCardID3,
+     ModifiedDate10,
+     TerritoryID2,
+     Name3,
+     CountryRegionCode,
+     Group_,
+     SalesYTD,
+     SalesLastYear,
+     CostYTD,
+     CostLastYear,
+     rowguid5,
+     ModifiedDate11,
+     BusinessEntityID2,
+     TerritoryID3,
+     StartDate2,
+     EndDate2,
+     rowguid6,
+     ModifiedDate12,
+     BusinessEntityID3,
+     QuotaDate,
+     SalesQuota,
+     rowguid7,
+     ModifiedDate13,
+     BusinessEntityID4,
+     TerritoryID4,
+     SalesQuota2,
+     Bonus,
+     CommissionPct,
+     SalesYTD2,
+     SalesLastYear2,
+     rowguid8,
+     ModifiedDate14
+     
+     )
+     values
+     
+     (
+     
+     :SalesOrderID ,
+     :RevisionNumber ,
+     :OrderDate ,
+     :DueDate ,
+     :ShipDate ,
+     :Status ,
+     :OnlineOrderFlag ,
+     :SalesOrderNumber ,
+     :PurchaseOrderNumber ,
+     :AccountNumber ,
+     :CustomerID ,
+     :SalesPersonID ,
+     :TerritoryID ,
+     :BillToAddressID ,
+     :ShipToAddressID ,
+     :ShipMethodID ,
+     :CreditCardID ,
+     :CreditCardApprovalCode ,
+     :CurrencyRateID ,
+     :SubTotal ,
+     :TaxAmt ,
+     :Freight ,
+     :TotalDue ,
+     :Comment_ ,
+     :rowguid ,
+     :ModifiedDate ,
+     :SalesOrderID2 ,
+     :SalesReasonID ,
+     :ModifiedDate2 ,
+     :SalesReasonID2 ,
+     :Name ,
+     :ReasonType_ ,
+     :ModifiedDate3 ,
+     :SalesOrderID3 ,
+     :SalesOrderDetailID ,
+     :CarrierTrackingNumber ,
+     :OrderQty ,
+     :ProductID ,
+     :SpecialOfferID ,
+     :UnitPrice ,
+     :UnitPriceDiscount ,
+     :LineTotal ,
+     :rowguid2 ,
+     :ModifiedDate4 ,
+     :SpecialOfferID2 ,
+     :Description ,
+     :DiscountPct ,
+     :Type_ ,
+     :Category ,
+     :StartDate ,
+     :EndDate ,
+     :MinQty ,
+     :MaxQty ,
+     :rowguid3 ,
+     :ModifiedDate5 ,
+     :SpecialOfferID3 ,
+     :ProductID2 ,
+     :rowguid4 ,
+     :ModifiedDate6 ,
+     :CurrencyRateID2 ,
+     :CurrencyRateDate ,
+     :FromCurrencyCode ,
+     :ToCurrencyCode ,
+     :AverageRate ,
+     :EndOfDayRate ,
+     :ModifiedDate7 ,
+     :CurrencyCode ,
+     :Name2 ,
+     :ModifiedDate8 ,
+     :CreditCardID2 ,
+     :CardType_ ,
+     :CardNumber ,
+     :ExpMonth ,
+     :ExpYear ,
+     :ModifiedDate9 ,
+     :BusinessEntityID ,
+     :CreditCardID3 ,
+     :ModifiedDate10 ,
+     :TerritoryID2 ,
+     :Name3 ,
+     :CountryRegionCode ,
+     :Group_ ,
+     :SalesYTD ,
+     :SalesLastYear ,
+     :CostYTD ,
+     :CostLastYear ,
+     :rowguid5 ,
+     :ModifiedDate11 ,
+     :BusinessEntityID2 ,
+     :TerritoryID3 ,
+     :StartDate2 ,
+     :EndDate2 ,
+     :rowguid6 ,
+     :ModifiedDate12 ,
+     :BusinessEntityID3 ,
+     :QuotaDate ,
+     :SalesQuota ,
+     :rowguid7 ,
+     :ModifiedDate13 ,
+     :BusinessEntityID4 ,
+     :TerritoryID4 ,
+     :SalesQuota2 ,
+     :Bonus ,
+     :CommissionPct ,
+     :SalesYTD2 ,
+     :SalesLastYear2 ,
+     :rowguid8 ,
+     :ModifiedDate14
+     
+     
+     );
+
+**** 03:36:29 Number of recs/msg: 5
+**** 03:36:29 Starting to send to RDBMS with record 2
+**** 03:37:06 Sending row 100001
+**** 03:37:45 Sending row 200001
+**** 03:38:23 Sending row 300001
+**** 03:39:01 Sending row 400001
+**** 03:39:40 Sending row 500001
+**** 03:40:18 Sending row 600001
+**** 03:40:55 Sending row 700001
+**** 03:41:33 Sending row 800001
+**** 03:42:11 Sending row 900001
+**** 03:42:48 Sending row 1000001
+**** 03:43:26 Sending row 1100001
+**** 03:44:04 Sending row 1200001
+**** 03:44:41 Sending row 1300001
+**** 03:45:19 Sending row 1400001
+**** 03:45:57 Sending row 1500001
+**** 03:46:35 Sending row 1600001
+**** 03:47:12 Sending row 1700001
+**** 03:47:50 Sending row 1800001
+**** 03:48:12 Sending row 1860006
+**** 03:48:12 Finished sending rows to the RDBMS
+
+**** 03:48:12 Acquisition Phase statistics:
+              Elapsed time: 00:11:43 (in hh:mm:ss)
+              CPU time:     50.9219 Seconds
+              MB/sec:       3.50
+              MB/cpusec:    48.38
+
+
+     ===================================================================
+     =                                                                 =
+     =          End Loading Phase                                      =
+     =                                                                 =
+     ===================================================================
+
+0014 end loading;
+
+**** 03:49:32 END LOADING COMPLETE
+
+     Total Records Read              =  1860006
+      - skipped by RECORD command    =  1
+      - sent to the RDBMS            =  1860005
+     Total Error Table 1             =  0  ---- Table has been dropped
+     Total Error Table 2             =  0  ---- Table has been dropped
+     Total Inserts Applied           =  1860005
+     Total Duplicate Rows            =  0
+
+     Start:   Fri Jul 21 03:48:12 2023
+     End  :   Fri Jul 21 03:49:32 2023
+
+**** 03:49:32 Application Phase statistics:
+              Elapsed time: 00:01:20 (in hh:mm:ss)
+
+
+0015 .LOGOFF;
+
+     ===================================================================
+     =                                                                 =
+     =          Logoff/Disconnect                                      =
+     =                                                                 =
+     ===================================================================
+
+**** 03:49:32 Logging off all sessions
+**** 03:49:32 Total processor time used = '51.0313 Seconds'
+     .        Start : Fri Jul 21 03:36:28 2023
+     .        End   : Fri Jul 21 03:49:32 2023
+     .        Highest return code encountered = '0'.
+**** 03:49:32 FDL4818 FastLoad Terminated

@@ -1,0 +1,280 @@
+     ===================================================================
+     =                                                                 =
+     =          FASTLOAD UTILITY     VERSION 16.20.00.05               =
+     =          PLATFORM WIN32                                         =
+     =          PID      10652                                         =
+     =                                                                 =
+     ===================================================================
+
+     ===================================================================
+     =                                                                 =
+     =          Copyright 1984-2020, Teradata Corporation.             =
+     =          ALL RIGHTS RESERVED.                                   =
+     =                                                                 =
+     ===================================================================
+
+**** 01:19:28 Processing starting at: Fri Jul 21 01:19:28 2023
+
+
+0001 .sessions 2;
+
+**** 01:19:28 FDL4866 SESSIONS command accepted
+
+0002 ERRLIMIT 40;
+
+**** 01:19:28 Error limit set to: 40
+
+     ===================================================================
+     =                                                                 =
+     =          Logon/Connection                                       =
+     =                                                                 =
+     ===================================================================
+
+0003 .LOGON 192.168.18.91/dbc,
+
+**** 01:19:28 Teradata Database Release: 16.20.32.23
+**** 01:19:28 Teradata Database Version: 16.20.32.23
+**** 01:19:28 Number of AMPs available: 2
+**** 01:19:28 Current CLI or RDBMS allows maximum row size: 64K
+**** 01:19:28 Character set for this job: ASCII
+
+0004 DATABASE DB_STG1;
+
+**** 01:19:29 Command completed successfully
+
+0005 .set record vartext "," QUOTE OPTIONAL '"';
+
+**** 01:19:29 Now set to read 'Variable-Length Text' records
+**** 01:19:29 Delimiter character(s) is set to ','
+**** 01:19:29 Field values are optionally quoted with '"'
+**** 01:19:29 Command completed successfully
+
+
+0006 DROP TABLE Person;
+
+**** 01:19:29 RDBMS error 3807: Object 'Person' does not exist.
+
+0007 DROP TABLE Person_ERROR1;
+
+**** 01:19:29 RDBMS error 3807: Object 'Person_ERROR1' does not exist.
+
+0008 DROP TABLE Person_ERROR2;
+
+**** 01:19:29 RDBMS error 3807: Object 'Person_ERROR2' does not exist.
+
+
+0009 CREATE SET TABLE Person
+          (
+     
+     	 BusinessEntityID1 VARCHAR(500),PersonType VARCHAR(500),NameStyle VARCHAR
+     (500),Title1 VARCHAR(500),FirstName VARCHAR(500),MiddleName VARCHAR(500),L
+     astName VARCHAR(500),Suffix VARCHAR(500),EmailPromotion VARCHAR(500),Addit
+     ionalContactInfo VARCHAR(500),Demographics VARCHAR(500),rowguid1 VARCHAR(5
+     00),ModifiedDate1 VARCHAR(500),BusinessEntityID2 VARCHAR(500),EmailAddress
+     ID VARCHAR(500),EmailAddress VARCHAR(500),rowguid2 VARCHAR(500),ModifiedDa
+     te2 VARCHAR(500),BusinessEntityID3 VARCHAR(500),PhoneNumber VARCHAR(500),P
+     honeNumberTypeID1 VARCHAR(500),ModifiedDate3 VARCHAR(500),PhoneNumberTypeI
+     D2 VARCHAR(500),Name1 VARCHAR(500),ModifiedDate4 VARCHAR(500),BusinessEnti
+     tyID4 VARCHAR(500),PasswordHash VARCHAR(500),PasswordSalt VARCHAR(500),row
+     guid3 VARCHAR(500),ModifiedDate5 VARCHAR(500),BusinessEntityID5 VARCHAR(50
+     0),AddressID1 VARCHAR(500),AddressTypeID1 VARCHAR(500),rowguid4 VARCHAR(50
+     0),ModifiedDate6 VARCHAR(500),AddressID2 VARCHAR(500),AddressLine1 VARCHAR
+     (500),AddressLine2 VARCHAR(500),City VARCHAR(500),StateProvinceID1 VARCHAR
+     (500),PostalCode VARCHAR(500),SpatialLocation VARCHAR(500),rowguid5 VARCHA
+     R(500),ModifiedDate7 VARCHAR(500),StateProvinceID2 VARCHAR(500),StateProvi
+     nceCode VARCHAR(500),CountryRegionCode1 VARCHAR(500),IsOnlyStateProvinceFl
+     ag VARCHAR(500),Name2 VARCHAR(500),TerritoryID VARCHAR(500),rowguid6 VARCH
+     AR(500),ModifiedDate8 VARCHAR(500),CountryRegionCode2 VARCHAR(500),Name3 V
+     ARCHAR(500),ModifiedDate9 VARCHAR(500),AddressTypeID2 VARCHAR(500),Name4 V
+     ARCHAR(500),rowguid7 VARCHAR(500),ModifiedDate10 VARCHAR(500),BusinessEnti
+     tyID6 VARCHAR(500),PersonID VARCHAR(500),ContactTypeID1 VARCHAR(500),Modif
+     iedDate11 VARCHAR(500),rowguid8 VARCHAR(500),ContactTypeID2 VARCHAR(500),N
+     ame5 VARCHAR(500),ModifiedDate12 VARCHAR(500),BusinessEntityID7 VARCHAR(50
+     0),ModifiedDate13 VARCHAR(500),rowguid9 VARCHAR(500)
+     
+     
+          );
+
+**** 01:19:29 Command completed successfully
+
+
+0010 RECORD 2;
+
+**** 01:19:29 Starting record number set to  : 2
+
+
+0011 DEFINE
+     
+     BusinessEntityID1 (VARCHAR(500)) PersonType (VARCHAR(500)) NameStyle (VARC
+     HAR(500)) Title1 (VARCHAR(500)) FirstName (VARCHAR(500)) MiddleName (VARCH
+     AR(500)) LastName (VARCHAR(500)) Suffix (VARCHAR(500)) EmailPromotion (VAR
+     CHAR(500)) AdditionalContactInfo (VARCHAR(500)) Demographics (VARCHAR(500)
+     ) rowguid1 (VARCHAR(500)) ModifiedDate1 (VARCHAR(500)) BusinessEntityID2 (
+     VARCHAR(500)) EmailAddressID (VARCHAR(500)) EmailAddress (VARCHAR(500)) ro
+     wguid2 (VARCHAR(500)) ModifiedDate2 (VARCHAR(500)) BusinessEntityID3 (VARC
+     HAR(500)) PhoneNumber (VARCHAR(500)) PhoneNumberTypeID1 (VARCHAR(500)) Mod
+     ifiedDate3 (VARCHAR(500)) PhoneNumberTypeID2 (VARCHAR(500)) Name1 (VARCHAR
+     (500)) ModifiedDate4 (VARCHAR(500)) BusinessEntityID4 (VARCHAR(500)) Passw
+     ordHash (VARCHAR(500)) PasswordSalt (VARCHAR(500)) rowguid3 (VARCHAR(500))
+      ModifiedDate5 (VARCHAR(500)) BusinessEntityID5 (VARCHAR(500)) AddressID1 
+     (VARCHAR(500)) AddressTypeID1 (VARCHAR(500)) rowguid4 (VARCHAR(500)) Modif
+     iedDate6 (VARCHAR(500)) AddressID2 (VARCHAR(500)) AddressLine1 (VARCHAR(50
+     0)) AddressLine2 (VARCHAR(500)) City (VARCHAR(500)) StateProvinceID1 (VARC
+     HAR(500)) PostalCode (VARCHAR(500)) SpatialLocation (VARCHAR(500)) rowguid
+     5 (VARCHAR(500)) ModifiedDate7 (VARCHAR(500)) StateProvinceID2 (VARCHAR(50
+     0)) StateProvinceCode (VARCHAR(500)) CountryRegionCode1 (VARCHAR(500)) IsO
+     nlyStateProvinceFlag (VARCHAR(500)) Name2 (VARCHAR(500)) TerritoryID (VARC
+     HAR(500)) rowguid6 (VARCHAR(500)) ModifiedDate8 (VARCHAR(500)) CountryRegi
+     onCode2 (VARCHAR(500)) Name3 (VARCHAR(500)) ModifiedDate9 (VARCHAR(500)) A
+     ddressTypeID2 (VARCHAR(500)) Name4 (VARCHAR(500)) rowguid7 (VARCHAR(500)) 
+     ModifiedDate10 (VARCHAR(500)) BusinessEntityID6 (VARCHAR(500)) PersonID (V
+     ARCHAR(500)) ContactTypeID1 (VARCHAR(500)) ModifiedDate11 (VARCHAR(500)) r
+     owguid8 (VARCHAR(500)) ContactTypeID2 (VARCHAR(500)) Name5 (VARCHAR(500)) 
+     ModifiedDate12 (VARCHAR(500)) BusinessEntityID7 (VARCHAR(500)) ModifiedDat
+     e13 (VARCHAR(500)) rowguid9 (VARCHAR(500))
+     
+     
+     
+     
+     FILE="F:\ADW 2017\ADW 2017\Person.csv";
+
+**** 01:19:29 FDL4803 DEFINE statement processed
+
+
+0012 begin loading
+     Person
+     errorfiles
+     Person_ERROR1
+     ,Person_ERROR2
+     
+     
+     CHECKPOINT 1000;
+
+**** 01:19:29 Number of FastLoad sessions requested = 2
+**** 01:19:29 Number of FastLoad sessions connected = 2
+**** 01:19:29 FDL4808 LOGON successful
+**** 01:19:34 Number of AMPs available: 2
+**** 01:19:34 BEGIN LOADING COMPLETE
+
+
+     ===================================================================
+     =                                                                 =
+     =          Insert Phase                                           =
+     =                                                                 =
+     ===================================================================
+
+0013 insert into Person
+     (
+     
+     BusinessEntityID1,PersonType,NameStyle,Title1,FirstName,MiddleName,LastNam
+     e,Suffix,EmailPromotion,AdditionalContactInfo,Demographics,rowguid1,Modifi
+     edDate1,BusinessEntityID2,EmailAddressID,EmailAddress,rowguid2,ModifiedDat
+     e2,BusinessEntityID3,PhoneNumber,PhoneNumberTypeID1,ModifiedDate3,PhoneNum
+     berTypeID2,Name1,ModifiedDate4,BusinessEntityID4,PasswordHash,PasswordSalt
+     ,rowguid3,ModifiedDate5,BusinessEntityID5,AddressID1,AddressTypeID1,rowgui
+     d4,ModifiedDate6,AddressID2,AddressLine1,AddressLine2,City,StateProvinceID
+     1,PostalCode,SpatialLocation,rowguid5,ModifiedDate7,StateProvinceID2,State
+     ProvinceCode,CountryRegionCode1,IsOnlyStateProvinceFlag,Name2,TerritoryID,
+     rowguid6,ModifiedDate8,CountryRegionCode2,Name3,ModifiedDate9,AddressTypeI
+     D2,Name4,rowguid7,ModifiedDate10,BusinessEntityID6,PersonID,ContactTypeID1
+     ,ModifiedDate11,rowguid8,ContactTypeID2,Name5,ModifiedDate12,BusinessEntit
+     yID7,ModifiedDate13,rowguid9
+     
+     
+     )
+     values
+     
+     (
+     
+     :BusinessEntityID1 ,:PersonType ,:NameStyle ,:Title1 ,:FirstName ,:MiddleN
+     ame ,:LastName ,:Suffix ,:EmailPromotion ,:AdditionalContactInfo ,:Demogra
+     phics ,:rowguid1 ,:ModifiedDate1 ,:BusinessEntityID2 ,:EmailAddressID ,:Em
+     ailAddress ,:rowguid2 ,:ModifiedDate2 ,:BusinessEntityID3 ,:PhoneNumber ,:
+     PhoneNumberTypeID1 ,:ModifiedDate3 ,:PhoneNumberTypeID2 ,:Name1 ,:Modified
+     Date4 ,:BusinessEntityID4 ,:PasswordHash ,:PasswordSalt ,:rowguid3 ,:Modif
+     iedDate5 ,:BusinessEntityID5 ,:AddressID1 ,:AddressTypeID1 ,:rowguid4 ,:Mo
+     difiedDate6 ,:AddressID2 ,:AddressLine1 ,:AddressLine2 ,:City ,:StateProvi
+     nceID1 ,:PostalCode ,:SpatialLocation ,:rowguid5 ,:ModifiedDate7 ,:StatePr
+     ovinceID2 ,:StateProvinceCode ,:CountryRegionCode1 ,:IsOnlyStateProvinceFl
+     ag ,:Name2 ,:TerritoryID ,:rowguid6 ,:ModifiedDate8 ,:CountryRegionCode2 ,
+     :Name3 ,:ModifiedDate9 ,:AddressTypeID2 ,:Name4 ,:rowguid7 ,:ModifiedDate1
+     0 ,:BusinessEntityID6 ,:PersonID ,:ContactTypeID1 ,:ModifiedDate11 ,:rowgu
+     id8 ,:ContactTypeID2 ,:Name5 ,:ModifiedDate12 ,:BusinessEntityID7 ,:Modifi
+     edDate13 ,:rowguid9
+     
+     
+     );
+
+**** 01:19:34 Number of recs/msg: 1
+**** 01:19:34 Starting to send to RDBMS with record 2
+**** 01:19:34 Sending row 1001
+**** 01:19:34 Sending row 2001
+**** 01:19:34 Sending row 3001
+**** 01:19:35 Sending row 4001
+**** 01:19:35 Sending row 5001
+**** 01:19:35 Sending row 6001
+**** 01:19:35 Sending row 7001
+**** 01:19:35 Sending row 8001
+**** 01:19:35 Sending row 9001
+**** 01:19:36 Sending row 10001
+**** 01:19:36 Sending row 11001
+**** 01:19:36 Sending row 12001
+**** 01:19:36 Sending row 13001
+**** 01:19:36 Sending row 14001
+**** 01:19:37 Sending row 15001
+**** 01:19:37 Sending row 16001
+**** 01:19:37 Sending row 17001
+**** 01:19:37 Sending row 18001
+**** 01:19:37 Sending row 19001
+**** 01:19:37 Sending row 20001
+**** 01:19:38 Sending row 21001
+**** 01:19:38 Sending row 22001
+**** 01:19:38 Sending row 22876
+**** 01:19:38 Finished sending rows to the RDBMS
+
+**** 01:19:38 Acquisition Phase statistics:
+              Elapsed time: 00:00:04 (in hh:mm:ss)
+              CPU time:     0.8125 Seconds
+              MB/sec:       4.96
+              MB/cpusec:    24.41
+
+
+     ===================================================================
+     =                                                                 =
+     =          End Loading Phase                                      =
+     =                                                                 =
+     ===================================================================
+
+0014 end loading;
+
+**** 01:19:39 END LOADING COMPLETE
+
+     Total Records Read              =  22876
+      - skipped by RECORD command    =  1
+      - sent to the RDBMS            =  22875
+     Total Error Table 1             =  0  ---- Table has been dropped
+     Total Error Table 2             =  0  ---- Table has been dropped
+     Total Inserts Applied           =  22875
+     Total Duplicate Rows            =  0
+
+     Start:   Fri Jul 21 01:19:38 2023
+     End  :   Fri Jul 21 01:19:39 2023
+
+**** 01:19:39 Application Phase statistics:
+              Elapsed time: 00:00:01 (in hh:mm:ss)
+
+
+0015 .LOGOFF;
+
+     ===================================================================
+     =                                                                 =
+     =          Logoff/Disconnect                                      =
+     =                                                                 =
+     ===================================================================
+
+**** 01:19:39 Logging off all sessions
+**** 01:19:39 Total processor time used = '0.984375 Seconds'
+     .        Start : Fri Jul 21 01:19:28 2023
+     .        End   : Fri Jul 21 01:19:39 2023
+     .        Highest return code encountered = '0'.
+**** 01:19:39 FDL4818 FastLoad Terminated

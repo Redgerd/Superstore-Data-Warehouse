@@ -1,0 +1,212 @@
+     ===================================================================
+     =                                                                 =
+     =          FASTLOAD UTILITY     VERSION 16.20.00.05               =
+     =          PLATFORM WIN32                                         =
+     =          PID      10884                                         =
+     =                                                                 =
+     ===================================================================
+
+     ===================================================================
+     =                                                                 =
+     =          Copyright 1984-2020, Teradata Corporation.             =
+     =          ALL RIGHTS RESERVED.                                   =
+     =                                                                 =
+     ===================================================================
+
+**** 01:25:34 Processing starting at: Fri Jul 21 01:25:34 2023
+
+
+0001 .sessions 2;
+
+**** 01:25:34 FDL4866 SESSIONS command accepted
+
+0002 ERRLIMIT 40;
+
+**** 01:25:34 Error limit set to: 40
+
+     ===================================================================
+     =                                                                 =
+     =          Logon/Connection                                       =
+     =                                                                 =
+     ===================================================================
+
+0003 .LOGON 192.168.18.91/dbc,
+
+**** 01:25:34 Teradata Database Release: 16.20.32.23
+**** 01:25:34 Teradata Database Version: 16.20.32.23
+**** 01:25:34 Number of AMPs available: 2
+**** 01:25:34 Current CLI or RDBMS allows maximum row size: 64K
+**** 01:25:34 Character set for this job: ASCII
+
+0004 DATABASE DB_STG1;
+
+**** 01:25:34 Command completed successfully
+
+0005 .set record vartext ",";
+
+**** 01:25:34 Now set to read 'Variable-Length Text' records
+**** 01:25:34 Delimiter character(s) is set to ','
+**** 01:25:34 Command completed successfully
+
+
+0006 DROP TABLE SalesTaxRate_Sales;
+
+**** 01:25:34 RDBMS error 3807: Object 'SalesTaxRate_Sales' does not
+              exist.
+
+0007 DROP TABLE SalesTaxRate_Sales_ERROR1;
+
+**** 01:25:34 RDBMS error 3807: Object 'SalesTaxRate_Sales_ERROR1' does
+              not exist.
+
+0008 DROP TABLE SalesTaxRate_Sales_ERROR2;
+
+**** 01:25:34 RDBMS error 3807: Object 'SalesTaxRate_Sales_ERROR2' does
+              not exist.
+
+
+0009 CREATE SET TABLE SalesTaxRate_Sales ,NO FALLBACK ,
+          NO BEFORE JOURNAL,
+          NO AFTER JOURNAL
+          (
+     	SalesTaxRateID	VARCHAR(10),
+     	StateProvinceID	VARCHAR(10),
+     	TaxType	VARCHAR(10),
+     	TaxRate	VARCHAR(10),
+     	Name	VARCHAR(80),
+     	rowguid	VARCHAR(500),
+     	ModifiedDate	VARCHAR(50)
+     
+     	);
+
+**** 01:25:34 RDBMS warning 6900: FallBackSetting is ALWAYS FALLBACK -
+              SalesTaxRate_Sales is set to FALLBACK.
+**** 01:25:34 Command completed successfully
+
+
+0010 RECORD 2 THRU 30;
+
+**** 01:25:34 Starting record number set to  : 2
+**** 01:25:34 Ending record number set to    : 30
+
+
+0011 DEFINE
+     
+     SalesTaxRateID (VARCHAR(10))
+      StateProvinceID (VARCHAR(10))
+      TaxType (VARCHAR(10))
+      TaxRate (VARCHAR(10))
+      Name (VARCHAR(80))
+      rowguid (VARCHAR(500))
+      ModifiedDate (VARCHAR(50))
+     
+     
+     
+     FILE="F:\ADW 2017\ADW 2017\SalesTaxRate.csv";
+
+**** 01:25:34 FDL4803 DEFINE statement processed
+
+
+0012 begin loading
+     SalesTaxRate_Sales
+     errorfiles
+     SalesTaxRate_Sales_ERROR1
+     ,SalesTaxRate_Sales_ERROR2
+     
+     
+     CHECKPOINT 10;
+
+**** 01:25:34 Session count 1 returned by the DBS overrides
+              user-requested session count
+**** 01:25:34 Number of FastLoad sessions requested = 1
+**** 01:25:34 Number of FastLoad sessions connected = 1
+**** 01:25:34 FDL4808 LOGON successful
+**** 01:25:35 Number of AMPs available: 2
+**** 01:25:35 BEGIN LOADING COMPLETE
+
+
+     ===================================================================
+     =                                                                 =
+     =          Insert Phase                                           =
+     =                                                                 =
+     ===================================================================
+
+0013 insert into SalesTaxRate_Sales (
+     
+     SalesTaxRateID,
+     StateProvinceID,
+     TaxType,
+     TaxRate,
+     Name,
+     rowguid,
+     ModifiedDate
+     
+     
+     )
+     values
+     
+     (
+     :SalesTaxRateID ,
+     :StateProvinceID ,
+     :TaxType ,
+     :TaxRate ,
+     :Name ,
+     :rowguid ,
+     :ModifiedDate
+     
+     
+     );
+
+**** 01:25:35 Number of recs/msg: 95
+**** 01:25:35 Starting to send to RDBMS with record 2
+**** 01:25:35 Sending row 11
+**** 01:25:35 Sending row 21
+**** 01:25:35 Sending row 30
+**** 01:25:35 Finished sending rows to the RDBMS
+
+**** 01:25:35 Acquisition Phase statistics:
+              Elapsed time: 00:00:00 (in hh:mm:ss)
+              CPU time:     0 Seconds
+              MB/sec:       N/A
+              MB/cpusec:    N/A
+
+
+     ===================================================================
+     =                                                                 =
+     =          End Loading Phase                                      =
+     =                                                                 =
+     ===================================================================
+
+0014 end loading;
+
+**** 01:25:35 END LOADING COMPLETE
+
+     Total Records Read              =  30
+      - skipped by RECORD command    =  1
+      - sent to the RDBMS            =  29
+     Total Error Table 1             =  0  ---- Table has been dropped
+     Total Error Table 2             =  0  ---- Table has been dropped
+     Total Inserts Applied           =  29
+     Total Duplicate Rows            =  0
+
+     Start:   Fri Jul 21 01:25:35 2023
+     End  :   Fri Jul 21 01:25:35 2023
+
+**** 01:25:35 Application Phase statistics:
+              Elapsed time: 00:00:00 (in hh:mm:ss)
+
+
+0015 .LOGOFF;
+
+     ===================================================================
+     =                                                                 =
+     =          Logoff/Disconnect                                      =
+     =                                                                 =
+     ===================================================================
+
+**** 01:25:35 Logging off all sessions
+**** 01:25:35 Total processor time used = '0.140625 Seconds'
+     .        Start : Fri Jul 21 01:25:34 2023
+     .        End   : Fri Jul 21 01:25:35 2023
+     .        Highest return code encountered = '0'.
+**** 01:25:35 FDL4818 FastLoad Terminated
