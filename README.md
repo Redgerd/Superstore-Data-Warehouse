@@ -14,8 +14,5 @@ This repository hosts a comprehensive data warehousing project that focuses on t
    - **ETL Implementation:**
      - Implementation of ETL processes, focusing on mapping data to the data warehouse model and applying transformations.
 
-## 3. Data Warehousing Best Practices
-   - **Data Quality Management:**
-     - Implementation of data quality management practices.
-   - **Governance and Security:**
-     - Adherence to data governance principles and integration of data security measures.
+![LMu4W](https://github.com/Redgerd/ADW-2017/assets/117646793/226ebe9c-a632-4875-8c95-161813f148f7)
+
