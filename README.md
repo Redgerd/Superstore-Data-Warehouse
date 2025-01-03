@@ -5,27 +5,21 @@
 ![ETL](https://img.shields.io/badge/ETL-%2381C784?style=for-the-badge&logo=cloud&logoColor=white)
 
 ### **Overview**  
-This architecture centralizes data from diverse sources into a data warehouse, enabling efficient querying and reporting. The key components are:- 
-- **ETL Processes**: Automated workflows for data extraction, transformation, and loading.  
-- **Data Modeling**: Dimensional models designed for optimized data retrieval and reporting.
-- **Data Integration**: Harmonizing diverse data formats and ensuring consistency across systems.
-  
-### **ETL Processes**  
-The ETL processes utilize **Teradata BTEQ** (Basic Teradata Query) for:  
-- **Data Cleansing**: Ensuring data quality by removing duplicates and inconsistencies.  
-- **Transformation Logic**: Applying business rules to transform raw data into meaningful information.  
-- **Data Loading**: Transferring processed data into the data warehouse.  
+This project focused on centralizing data into a data warehouse for efficient querying and reporting through automated ETL processes.
 
+### **ETL Processes**  
+Utilizing **Teradata BTEQ** and **Teradata FastLoad**, the ETL processes included:  
+- **Data Cleansing**: Removing duplicates and correcting inconsistencies to ensure data quality.  
+- **Transformation**: Applying business rules to convert raw data into structured and usable information.  
+- **Data Loading**: Efficiently loading the transformed data into the data warehouse.
 
 ### **ETL Implementation**  
-The ETL pipeline employs Teradata BTEQ scripts for streamlined data management. Key responsibilities include:
-- Mapping raw data from CSV files into a normalized relational schema, ensuring efficient storage and retrieval.
-- Applying transformation logic and business rules to adapt the data to the warehouse schema.
-- Validating data integrity at each stage to maintain quality.
-- Leveraging Teradata FastLoad for rapid ingestion of large datasets during the initial load process.
+- Implemented a **pre-existing normalized schema** for effective data storage and retrieval.  
+- Loaded and transformed raw CSV data into the warehouse, ensuring alignment with the schema and business rules.  
+- Used **Teradata FastLoad** for fast data ingestion and validated data integrity throughout the process.
 
 ## Technologies Used  
-- **Teradata Studio**: Core ETL scripting tool for data extraction, transformation, and loading.  
+- **Teradata Studio**: An administration toolkit that helps users to create and administer database objects.
 - **Teradata BTEQ**: Core ETL scripting tool for data extraction, transformation, and loading.  
 - **Teradata FastLoad**: Specialized utility for rapid loading of large datasets into the database.  
 
