@@ -25,7 +25,7 @@ The ETL pipeline employs Teradata BTEQ scripts for streamlined data management. 
 - Leveraging Teradata FastLoad for rapid ingestion of large datasets during the initial load process.
 
 ## Technologies Used  
-
+- **Teradata Studio**: Core ETL scripting tool for data extraction, transformation, and loading.  
 - **Teradata BTEQ**: Core ETL scripting tool for data extraction, transformation, and loading.  
 - **Teradata FastLoad**: Specialized utility for rapid loading of large datasets into the database.  
 
